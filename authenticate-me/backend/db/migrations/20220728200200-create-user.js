@@ -38,3 +38,5 @@ module.exports = {
     return queryInterface.dropTable("Users");
   }
 };
+
+

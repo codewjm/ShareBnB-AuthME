@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+![alt text](ShareBnB_Schema.png)
 
 ## API Documentation
 

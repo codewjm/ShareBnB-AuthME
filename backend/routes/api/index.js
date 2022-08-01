@@ -15,10 +15,6 @@ router.post('/test', (req, res) => {
 });
 
 
-// router.post('/test', function(req, res) {
-//   res.json({ requestBody: req.body });
-// });
-
 // // ...
 
 // // backend/routes/api/index.js

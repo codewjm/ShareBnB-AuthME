@@ -2,8 +2,7 @@
 
 ## Database Schema Design
 
-![correctSchema](SharesBnB.png)
-
+![Schema](air.png)
 
 ## API Documentation
 

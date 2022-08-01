@@ -4,14 +4,16 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, username, email } = this; // context will be the User instance
+      return { id, firstName, lastName, username, email };
     }
 
+    // - instance method: validate password
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
 
+    // - static methods
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);
     }
@@ -31,26 +33,59 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
+        firstName,
+        lastName,
         username,
         email,
         hashedPassword
       });
       return await User.scope('currentUser').findByPk(user.id);
     }
-    
-    static associate(models) {
+
       /**
+      * (Below)
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    static associate(models) {
+
+      User.hasMany(
+        models.Spot, {
+          foreignKey: 'ownerId'
+        }
+      );
+      User.hasMany(
+        models.Review, {
+          foreignKey: 'userId'
+        }
+      );
+      User.hasMany(
+        models.Booking, {
+          foreignKey: 'userId'
+        }
+      );
     }
   };
 
   User.init({
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 35]
+      }
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 35]
+      }
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,

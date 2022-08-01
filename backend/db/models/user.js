@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
         hashedPassword
       });
       return await User.scope('currentUser').findByPk(user.id);
-    }
+    };
 
       /**
       * (Below)

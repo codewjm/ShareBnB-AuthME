@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'userId'
         }
       );
-      Booking.beFlongsTo(
+      Booking.belongsTo(
         models.Spot, {
         foreignKey: 'spotId'
         }
-      );
+      )
     }
   };
 

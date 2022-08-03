@@ -12,10 +12,10 @@ const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
+    .withMessage('Email or username is required'),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
+    .withMessage('Password is required'),
   handleValidationErrors
 ];
 
@@ -30,16 +30,22 @@ router.post(
 
     if (!user) {
       const err = new Error('Login failed');
+      err.message = 'Invalid credentials'
       err.status = 401;
-      err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
 
-    await setTokenCookie(res, user);
 
+
+    const logIn = user.toJSON();
+    const token = setTokenCookie(res, user);
     return res.json({
-      user
+      id: logIn.id,
+      firstName: logIn.firstName,
+      lastName: logIn.lastName,
+      email: logIn.email,
+      username: logIn.username,
+      token
     });
   }
 );
@@ -53,7 +59,7 @@ router.delete(
   }
 );
 
-// Restore session user
+// Display current user
 router.get(
   '/',
   restoreUser,
@@ -66,6 +72,7 @@ router.get(
     } else return res.json({});
   }
 );
+
 
 
 module.exports = router;

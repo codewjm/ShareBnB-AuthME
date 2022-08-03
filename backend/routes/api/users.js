@@ -7,28 +7,28 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const validateSignup = [
-  check('firstName')
-    .exists({ checkFalsy: true })
-    .withMessage('First name cannot be empty'),
-  check('lastName')
-    .exists({ checkFalsy: true })
-    .withMessage('First name cannot be empty'),
   check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
+  .exists({ checkFalsy: true })
+  .isEmail()
+  .withMessage('Invalid email'),
   check('username')
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
+    .withMessage('Username is required'),
+  check('firstName')
+    .exists({ checkFalsy: true })
+    .withMessage('First name is required'),
+  check('lastName')
+    .exists({ checkFalsy: true })
+    .withMessage('Last name is required'),
   check('username')
     .not()
     .isEmail()
     .withMessage('Username cannot be an email.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 6 })
-    .withMessage('Password must be 6 characters or more.'),
+  // check('password')
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 6 })
+  //   .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
 // Sign up
@@ -72,8 +72,8 @@ router.post(
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
-      username: user.username,
       email: user.email,
+      username: user.username,
       token: user.token
     });
 }

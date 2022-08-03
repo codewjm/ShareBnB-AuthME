@@ -29,7 +29,6 @@ module.exports = {
         userId: 4,
         startDate: '2022-10-05',
         endDate: '2022-10-09'
-
       },
     ]
 

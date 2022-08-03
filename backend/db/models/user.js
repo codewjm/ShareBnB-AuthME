@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, firstName, lastName, email, username  } = this; // context will be the User instance
+      const { id, firstName, lastName, email, username } = this; // context will be the User instance
       return { id, firstName, lastName, email, username };
     }
 
@@ -45,28 +45,35 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     };
 
-      /**
-      * (Below)
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    /**
+    * (Below)
+   * Helper method for defining associations.
+   * This method is not a part of Sequelize lifecycle.
+   * The `models/index` file will call this method automatically.
+   */
     static associate(models) {
 
       User.hasMany(
         models.Spot, {
-          foreignKey: 'ownerId'
-        }
+        foreignKey: 'ownerId',
+        onDelete: 'CASCADE',
+        hooks: true,
+        as: 'Owner'
+      }
       );
       User.hasMany(
         models.Review, {
-          foreignKey: 'userId'
-        }
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        hooks: true
+      }
       );
       User.hasMany(
         models.Booking, {
-          foreignKey: 'userId'
-        }
+        foreignKey: 'userId',
+        onDelete: 'CASCADE',
+        hooks: true
+      }
       );
     }
   };

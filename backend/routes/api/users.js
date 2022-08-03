@@ -7,6 +7,12 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const validateSignup = [
+  check('firstName')
+    .exists({ checkFalsy: true })
+    .withMessage('First name cannot be empty'),
+  check('lastName')
+    .exists({ checkFalsy: true })
+    .withMessage('First name cannot be empty'),
   check('email')
     .exists({ checkFalsy: true })
     .isEmail()
@@ -29,16 +35,48 @@ const validateSignup = [
 router.post(
   '/',
   validateSignup,
-  async (req, res) => {
+  async (req, res, next) => {
     const { firstName, lastName, email, password, username } = req.body;
-    const user = await User.signup({ firstName, lastName, email, username, password });
 
-    await setTokenCookie(res, user);
+    const takenEmail = await User.findOne({
+      where: {
+        email
+      }
+    })
 
-    return res.json({
-      user
+    if(takenEmail) {
+      const err = new Error('User already exists')
+      err.status = 403;
+      err.errors = { email: "User with that email already exists" }
+      next(err)
+    }
+
+    const takenUsername = await User.findOne({
+      where: {
+        username
+      }
+    })
+
+    if (takenUsername) {
+      const err = new Error('User already exists')
+      err.status = 403;
+      err.errors = {email: "User with that username already exists"}
+      next(err)
+    }
+
+    let user = await User.signup({ firstName, lastName, email, username, password });
+    const token = setTokenCookie(res, user);
+    user = user.toJSON()
+    user.token = token
+    res.json({
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      email: user.email,
+      token: user.token
     });
-  }
+}
 );
 
 module.exports = router;

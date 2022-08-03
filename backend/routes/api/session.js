@@ -1,7 +1,7 @@
 
 // backend/routes/api/session.js
 const express = require('express')
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const router = express.Router();
 
@@ -35,8 +35,6 @@ router.post(
       return next(err);
     }
 
-
-
     const logIn = user.toJSON();
     const token = setTokenCookie(res, user);
     return res.json({
@@ -63,6 +61,7 @@ router.delete(
 router.get(
   '/',
   restoreUser,
+  requireAuth,
   (req, res) => {
     const { user } = req;
     if (user) {

@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Booking',
-    scopes:{
+    scopes: {
       invalidOwner:{
         attributes:['spotId','startDate','endDate']
       },

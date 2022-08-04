@@ -11,23 +11,23 @@ module.exports = (sequelize, DataTypes) => {
 
       Spot.belongsTo(
         models.User, {
-          foreignKey: 'ownerId', as: 'Owner'
-        }
+        foreignKey: 'ownerId', as: 'Owner'
+      }
       );
       Spot.hasMany(
         models.Booking, {
-          foreignKey: 'spotId'
-        }
-       );
+        foreignKey: 'spotId'
+      }
+      );
       Spot.hasMany(
         models.Review, {
-          foreignKey: 'spotId'
-        }
+        foreignKey: 'spotId'
+      }
       );
       Spot.hasMany(
         models.Image, {
-          foreignKey: 'spotId'
-        }
+        foreignKey: 'spotId'
+      }
       );
     }
   };
@@ -82,6 +82,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Spot',
-  });
+    scopes: {
+      removeAttributes: {
+        attributes: {
+          exclude: ['createdAt', 'updatedAt']
+        }
+      },
+    }
+  }
+  );
   return Spot;
 };

@@ -31,7 +31,8 @@ const validateSignup = [
   //   .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
-// Sign up
+
+// User Sign up
 router.post('/', validateSignup, async (req, res, next) => {
   const { firstName, lastName, email, password, username } = req.body;
 
@@ -65,9 +66,9 @@ router.post('/', validateSignup, async (req, res, next) => {
   const token = setTokenCookie(res, user);
   const userObj = user.toSafeObject()
   userObj.token = token
-  res.json({
+  res.json(
     userObj
-  });
+  );
 }
 );
 

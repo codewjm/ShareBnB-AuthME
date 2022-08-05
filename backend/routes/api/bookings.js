@@ -19,11 +19,16 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
   })
   const image = await Image.findOne({
     where: {
-        userId: req.user.id
+        spotId: req.user.id
     }
 })
   let bookingArr = []
   for(let booking of userBookings){
+    const image = await Image.findOne({
+      where: {
+          spotId: booking.spotId
+      }
+  })
       let bookings = booking.toJSON()
       bookings.Spot.previewImage = image.dataValues.url
       bookingArr.push(bookings)
@@ -95,6 +100,30 @@ router.put('/:bookingId', validateBooking, requireAuth, restoreUser, async (req,
 })
 booking.save()
 res.json(booking)
+})
+
+// Delete a Booking
+router.delete('/:bookingId', restoreUser, requireAuth, async (req, res, next) => {
+  const deleteBooking = await Booking.findByPk(req.params.bookingId)
+  if (!deleteBooking) {
+    const err = new Error("Booking couldn't be found");
+    err.message = "Booking couldn't be found"
+    err.status = 404;
+    return next(err)
+  }
+  if (deleteBooking.userId !== req.user.id) {
+    const err = new Error("Forbidden")
+    err.message = "Forbidden"
+    err.status = 403
+    return next(err)
+  }
+  if (deleteBooking && deleteBooking.userId === req.user.id) {
+    deleteBooking.destroy()
+    res.json({
+      message: "Successfully deleted",
+      statusCode: 200
+    });
+  }
 })
 
 module.exports = router;

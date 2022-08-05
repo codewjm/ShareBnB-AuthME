@@ -77,7 +77,7 @@ router.get('/', validateQuery, async (req, res) => {
     if (!avgRating) {
       thisSpot.avgRating = "Spot is not yet rated"
     } else {
-      thisSpot.avgRating = Number(avgRating).toFixed(1);
+      thisSpot.avgRating = parseInt(Number(avgRating).toFixed(1));
     }
 
     // const avgRating = reviewData[0].dataValues.avgStars;
@@ -129,7 +129,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
     if (!avgRating) {
       spot.dataValues.avgRating = "Spot is not yet rated"
     } else {
-      spot.dataValues.avgRating = Number(avgRating).toFixed(1);
+      spot.dataValues.avgRating = parseInt(Number(avgRating).toFixed(1));
     }
     const image = await Image.findOne({
       where: {
@@ -430,12 +430,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
     }
   })
 
-  if (reviewed.length) {
-    const err = new Error('User already has a review for this spot')
-    err.message = "User already has a review for this spot",
-    err.status = 403
-    next(err)
-  } else if (review.length < 1 || !/[1-5]/.test(stars)) {
+  if (review.length < 1 || !/[1-5]/.test(stars)) {
     const err = new Error("Validation");
     err.message = "Validation error";
     err.status = 400;
@@ -444,10 +439,15 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
       stars: "Stars must be an integer from 1 to 5"
     }
     next(err)
+  } else if (reviewed.length) {
+    const err = new Error('User already has a review for this spot')
+    err.message = "User already has a review for this spot",
+    err.status = 403
+    next(err)
   } else {
     const spotReview = await Review.create({
       userId: req.user.id,
-      spotId: req.params.spotId,
+      spotId: parseInt(req.params.spotId),
       review,
       stars
     })
@@ -479,11 +479,15 @@ router.get('/:spotId/reviews', async (req, res, next) => {
       attributes: ['id', ['reviewId', 'imageableId'], 'url']
     });
 
-    review.dataValues.Image = image
+    review.dataValues.Images = image
     review.dataValues.User = user.toJSON();
   }
   res.json({"Reviews": spotReviews})
 })
+
+
+
+
 
 
 module.exports = router;

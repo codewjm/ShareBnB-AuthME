@@ -56,12 +56,12 @@ router.post('/:reviewId/images', restoreUser, requireAuth, async (req, res, next
     const err = new Error("Review couldn't be found");
     err.message = "Review couldn't be found";
     err.status = 404
-    next(err)
+    return next(err)
   } else if (review.userId !== req.user.id) {
     const err = new Error("Forbidden")
     err.message = "Forbidden"
     err.status = 403
-    next(err)
+    return next(err)
   }
   const reviewImages = await Image.findAll({
     where: { spotId: review.spotId }

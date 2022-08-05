@@ -460,8 +460,8 @@ router.post('/:spotId/reviews', requireAuth, async (req, res, next) => {
 router.get('/:spotId/reviews', async (req, res, next) => {
 
 
-  const checkSpot = await Spot.findByPk(req.params.spotId)
-  if (!checkSpot) {
+  const spot = await Spot.findByPk(req.params.spotId)
+  if (!spot) {
     const err = new Error("Spot couldn't be found")
     err.message = "Spot couldn't be found"
     err.status = 404

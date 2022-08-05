@@ -151,18 +151,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
 
 
 
-// const reviewData = await spot.getReviews({
-//   attributes: [
-//     [sequelize.fn("AVG", sequelize.col("stars")), "avgStars"],
-//   ],
-// });
-
-// const avgRating = reviewData[0].dataValues.avgStars;
-// if (!avgRating) {
-//   thisSpot.avgRating = "Spot is not yet rated"
-// } else {
-//   thisSpot.avgRating = Number(avgRating).toFixed(1);
-// }
 
 // Get details of a spot from an id
 router.get('/:spotId', async (req, res, next) => {

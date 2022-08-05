@@ -21,8 +21,7 @@ module.exports = {
         allowNull: false
       },
       reviewId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       userId: {
         type: Sequelize.INTEGER,

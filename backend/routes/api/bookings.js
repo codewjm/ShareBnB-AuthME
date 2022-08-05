@@ -1,72 +1,100 @@
 const express = require('express');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require("../../utils/validation");
-const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
+const { validateBooking } = require("../../utils/validation");
+const { requireAuth, restoreUser } = require('../../utils/auth');
 const { Spot, User, Image, Review, Booking, sequelize } = require('../../db/models');
-const { Op, where, Model } = require("sequelize");
+const { Op, where } = require("sequelize");
 const router = express.Router();
 
 
 // Get all of the Current User's Bookings
 router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
 
-  const bookingData = {
-    id: "",
-    spotId: "",
-    Spot: {
-      id: "",
-      ownerId: "",
-      address: "",
-      city: "",
-      state: "",
-      country: "",
-      lat: "",
-      lng: "",
-      name: "",
-      price: "",
-      previewImage: ""
-    },
-    userId: "",
-    startDate: "",
-    endDate: "",
-    createdAt: "",
-    updatedAt: ""
-  }
-
-  const bookings = await Booking.findAll({
+  const userBookings = await Booking.findAll({
+      where: {
+          userId: req.user.id
+      },
+      include: {
+          model: Spot.scope('removeAttributes'),
+      },
+  })
+  const image = await Image.findOne({
     where: {
-      userId: req.user.id
-    },
-    include: [
-      {
-        model: Spot.scope('removeAttributes')
+        userId: req.user.id
+    }
+})
+  let bookingArr = []
+  for(let booking of userBookings){
+      let bookings = booking.toJSON()
+      bookings.Spot.previewImage = image.dataValues.url
+      bookingArr.push(bookings)
+  }
+  res.json({"Bookings": bookingArr})
+})
+
+
+// Edit a Booking
+router.put('/:bookingId', validateBooking, requireAuth, restoreUser, async (req, res, next) => {
+  const { startDate, endDate } = req.body
+  const booking = await Booking.findByPk(req.params.bookingId);
+  const bookingId = req.params.bookingId;
+
+  if (!booking) {
+    const err = new Error("Booking couldn't be found");
+    err.message = "Booking couldn't be found";
+    err.status = 404;
+    next(err)
+  }
+  if (endDate <= startDate || endDate === null) {
+    const err = new Error("Validation");
+    err.message = "Validation error";
+    err.status = 400;
+    err.errors = { endDate: "endDate cannot be on or before startDate" }
+    next(err);
+    }
+  if (new Date(booking.endDate) < new Date()) {
+    const err = new Error("Past bookings can't be modified")
+    err.message = "Past bookings can't be modified";
+    err.status = 403
+    return next(err)
+  }
+  let bookedDate = await Booking.findAll({
+    where: {
+      [Op.and]: [{
+        startDate: {
+          [Op.lte]: endDate
+        },
       },
       {
-        model: Spot,
-        attributes: [
-          "id",
-          "ownerId",
-          "address",
-          "city",
-          "state",
-          "country",
-          "lat",
-          "lng",
-          "name",
-          "price",
-        ]
-      },
-    ]
+        endDate: {
+          [Op.gte]: startDate
+        }
+      }],
+    }
   });
-  const userBooking = bookings.map((booking) =>
-    Object.assign(bookingData, booking.toJSON())
-  );
-  return res.json({ Bookings: userBooking })
-});
 
-
-
-
-
+  if (bookedDate.length) {
+    const err = new Error("Sorry, this spot is already bookedDate for the specified dates");
+    err.message = "Sorry, this spot is already bookedDate for the specified dates";
+    err.status = 403;
+    err.errors = {
+      startDate: "Start date conflicts with an existing booking",
+      endDate: "End date conflicts with an existing booking"
+    };
+    next(err)
+  }
+  if (booking.userId !== req.user.id) {
+    const err = new Error('Forbidden');
+    err.message = 'Forbidden';
+    err.status = 403;
+    next(err);
+  }
+  booking.update({
+    startDate,
+    endDate,
+    updatedAt: new Date(),
+})
+booking.save()
+res.json(booking)
+})
 
 module.exports = router;

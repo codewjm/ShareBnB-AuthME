@@ -7,81 +7,46 @@ const { Op, where, Model } = require("sequelize");
 const router = express.Router();
 
 // Get all reviews of the Current User
-router.get('/current', requireAuth, async (req, res) => {
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
 
-  const reviewData = {
-    id: "",
-    userId: "",
-    spotId: "",
-    review: "",
-    stars: "",
-    createdAt: "",
-    updatedAt: "",
-    User: {
-      id: "",
-      firstName: "",
-      lastName: ""
-    },
-    Spot: {
-      id: "",
-      ownerId: "",
-      address: "",
-      city: "",
-      state: "",
-      country: "",
-      lat: "",
-      lng: "",
-      name: "",
-      price: "",
-    },
-    Images: [
-      {
-        id: "",
-        imageableId: "",
-        urel: ""
-      }
-    ]
+const userReviews = await Review.findAll({
+  where: {
+    userId: req.user.id
+  },
+  include: {
+    model: Spot.scope("removeAttributes")
   }
+})
 
-  const userReviews = await Review.findAll({
-    include: [
-      {
-        model: User,
-        attributes: [
-          "id",
-          "firstName",
-          "lastName"
-        ]
-      },
-      {
-        model: Spot,
-        attributes: [
-          "id",
-          "ownerId",
-          "address",
-          "city",
-          "state",
-          "country",
-          "lat",
-          "lng",
-          "name",
-          "price"
-        ]
-      },
-      {
-        model: Image,
-        attributes: [
-          "id",
-          ["reviewId", "imageableId"],
-          "url"
-        ]
-      }],
-    where: { userId: req.user.id } // current user
+for (let review of userReviews) {
+  const user = await review.getUser({
+    attributes: ['id', 'firstName', 'lastName']
+  });
+  const spot = await review.getSpot({
+    attributes: [
+      'id',
+      'ownerId',
+      'address',
+      'city',
+      'state',
+      'country',
+      'lat',
+      'lng',
+      'name',
+      'price']
   })
-  const reviews = userReviews.map((review) =>
-    Object.assign(reviewData, review.toJSON())
-  );
-  res.json({ Reviews: reviews })
-});
+  const image = await review.getImages({
+    attributes: ['id', ['reviewId', 'imageableId'], 'url']
+  });
+
+  review.dataValues.User = user.toJSON();
+  review.dataValues.Spot = spot.toJSON();
+  review.dataValues.Image = image
+}
+res.json({"Reviews": userReviews})
+})
+
+
+
 
 module.exports = router;

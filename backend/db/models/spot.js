@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
     scopes: {
       removeAttributes: {
         attributes: {
-          exclude: ['createdAt', 'updatedAt']
+          exclude: ['createdAt', 'updatedAt', 'description']
         }
       },
     }

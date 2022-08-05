@@ -19,7 +19,7 @@ module.exports = {
         price: 500
       },
       {
-        ownerId: 1,
+        ownerId: 2,
         address: '222 Cygnus Avenue',
         city: 'Austin',
         state: 'TX',
@@ -31,7 +31,7 @@ module.exports = {
         price: 600
       },
       {
-        ownerId: 2,
+        ownerId: 3,
         address: '333 Orion Lane',
         city: 'San Francisco',
         state: 'CA',
@@ -43,7 +43,7 @@ module.exports = {
         price: 700
       },
       {
-        ownerId: 2,
+        ownerId: 4,
         address: '444 Centaurus Street',
         city: 'New York',
         state: 'NY',
@@ -55,7 +55,7 @@ module.exports = {
         price: 800
       },
       {
-        ownerId: 2,
+        ownerId: 5,
         address: '555 Cassiopeia Avenue',
         city: 'Chicago',
         state: 'IL',

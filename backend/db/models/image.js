@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     previewImage: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: true
     },
     spotId: {
       type: DataTypes.INTEGER,
@@ -39,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     reviewId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'Reviews',
         key: 'id'

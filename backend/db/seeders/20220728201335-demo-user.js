@@ -31,6 +31,13 @@ module.exports = {
         email: 'jstacey@user.io',
         username: 'TravelingJess',
         hashedPassword: bcrypt.hashSync('password4')
+      },
+      {
+        firstName: 'Will',
+        lastName: 'Marett',
+        email: 'codingninja@user.io',
+        username: 'WorldofWill',
+        hashedPassword: bcrypt.hashSync('password5')
       }
     ], {});
   },
@@ -42,7 +49,8 @@ module.exports = {
         'SilveroAroundTheWorld',
         'JacobsWorld',
         'TravelerDevlatano',
-        'TravelingJess'
+        'TravelingJess',
+        'WorldofWill'
       ] }
     }, {});
   }

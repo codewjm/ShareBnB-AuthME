@@ -2,15 +2,15 @@
 const express = require('express')
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
-const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const router = express.Router();
 
 const validateSignup = [
   check('email')
-  .exists({ checkFalsy: true })
-  .isEmail()
-  .withMessage('Invalid email'),
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage('Invalid email'),
   check('username')
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
@@ -32,50 +32,42 @@ const validateSignup = [
   handleValidationErrors
 ];
 // Sign up
-router.post(
-  '/',
-  validateSignup,
-  async (req, res, next) => {
-    const { firstName, lastName, email, password, username } = req.body;
+router.post('/', validateSignup, async (req, res, next) => {
+  const { firstName, lastName, email, password, username } = req.body;
 
-    const takenEmail = await User.findOne({
-      where: {
-        email
-      }
-    })
-
-    if(takenEmail) {
-      const err = new Error('User already exists')
-      err.errors = { email: "User with that email already exists" }
-      err.status = 403;
-      return next(err)
+  const takenEmail = await User.findOne({
+    where: {
+      email
     }
+  })
 
-    const takenUsername = await User.findOne({
-      where: {
-        username
-      }
-    })
+  if (takenEmail) {
+    const err = new Error('User already exists')
+    err.errors = { email: "User with that email already exists" }
+    err.status = 403;
+    return next(err)
+  }
 
-    if (takenUsername) {
-      const err = new Error('User already exists')
-      err.errors = {email: "User with that username already exists"}
-      err.status = 403;
-      return next(err)
+  const takenUsername = await User.findOne({
+    where: {
+      username
     }
+  })
 
-    const user = await User.signup({ firstName, lastName, email, username, password });
-    const token = setTokenCookie(res, user);
-    user = user.toJSON()
-    user.token = token
-    res.json({
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      username: user.username,
-      token: user.token
-    });
+  if (takenUsername) {
+    const err = new Error('User already exists')
+    err.errors = { email: "User with that username already exists" }
+    err.status = 403;
+    return next(err)
+  }
+
+  let user = await User.signup({ firstName, lastName, email, username, password });
+  const token = setTokenCookie(res, user);
+  const userObj = user.toSafeObject()
+  userObj.token = token
+  return res.json({
+    userObj
+  });
 }
 );
 

@@ -482,7 +482,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
     review.dataValues.Image = image
     review.dataValues.User = user.toJSON();
   }
-  res.json({"Reviews": spotRreviews})
+  res.json({"Reviews": spotReviews})
 })
 
 

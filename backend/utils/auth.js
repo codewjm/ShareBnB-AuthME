@@ -5,10 +5,7 @@ const { User } = require('../db/models');
 
 const { secret, expiresIn } = jwtConfig;
 
-// backend/utils/auth.js
-// ...
 
-// Sends a JWT Cookie
 const setTokenCookie = (res, user) => {
   // Create the token.
   const token = jwt.sign(
@@ -32,7 +29,7 @@ const setTokenCookie = (res, user) => {
 
 
 const restoreUser = (req, res, next) => {
-  // token parsed from cookies
+
   const { token } = req.cookies;
   req.user = null;
 
@@ -55,10 +52,7 @@ const restoreUser = (req, res, next) => {
   });
 };
 
-// backend/utils/auth.js
-// ...
 
-// If there is no current user, return an error
 const requireAuth = function (req, _res, next) {
   if (req.user) return next();
 

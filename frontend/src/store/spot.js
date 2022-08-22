@@ -44,7 +44,7 @@ const remove = (spotId) => {
 }
 
 // Action Creators
-export const getAllSpots = (spots) => async (dispatch) {
+export const getAllSpots = (spots) => async (dispatch) => {
   const res = await fetch('/api/spots')
 
   if(res.ok) {

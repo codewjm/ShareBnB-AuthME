@@ -1,20 +1,11 @@
 import { csrfFetch } from './csrf';
 
-// Actions Section - CRUD
-const LOAD_ALL_REVIEWS = 'reviews/getAllReviews';
+// Actions Section - CRD (no update)
 const CREATE_REVIEW = 'reviews/createReview';
-const LOAD_REVIEW = 'reviews/getReview';
-const UPDATE_REVIEW = 'reviews/updateReview';
+const LOAD_ALL_REVIEWS = 'reviews/getAllReviews';
 const DELETE_REVIEW = 'reviews/deleteReview';
 
 // Action Creators Section
-const loadAll = (reviews) => {
-  return {
-    type: LOAD_ALL_REVIEWS,
-    reviews
-  };
-};
-
 const createOne = (review) => {
   return {
     type: CREATE_REVIEW,
@@ -22,18 +13,24 @@ const createOne = (review) => {
   };
 };
 
-// Thunks Section
-
-// Get all reviews for a spot
-export const getAllReviews = () => async (dispatch) => {
-  const res = await csrfFetch(`/api/spots/${spotId}/reviews`);
-
-  if (res.ok) {
-    const reviews = await res.json();
-    dispatch(loadAll(reviews))
+const loadAll = (reviews) => {
+  return {
+    type: LOAD_ALL_REVIEWS,
+    reviews
   };
 };
 
+const deleteOne = (reviewId) => {
+  return {
+    type: DELETE_REVIEW,
+    reviewId
+  }
+}
+
+
+// Thunks Section
+
+// Create a review for a spot by Spot's Id
 export const createReview = (review, spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
     method: 'POST',
@@ -46,3 +43,35 @@ export const createReview = (review, spotId) => async (dispatch) => {
     dispatch(createOne(newReview));
   };
 };
+
+
+// Get all Reviews by a Spot's Id
+export const getAllReviews = (spotId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/${spotId}/reviews`);
+
+  if (res.ok) {
+    const reviews = await res.json();
+    dispatch(loadAll(reviews))
+  };
+};
+
+
+// Delete a review by Id
+export const deleteReview = (reviewId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+    method: 'DELETE',
+  });
+
+  if (res.ok) {
+    dispatch(deleteOne(deleteOne))
+  };
+};
+
+
+// Reducer Section
+let initialState = {};
+const reviewReducer = (state = initialState, action) => {
+  switch (action.type) {
+
+  }
+}

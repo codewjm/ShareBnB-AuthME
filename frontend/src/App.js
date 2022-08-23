@@ -18,6 +18,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/signup">
+          // could live within the signupformpage folder, those components will display if children of folder. 
             <SignupFormPage />
           </Route>
         </Switch>

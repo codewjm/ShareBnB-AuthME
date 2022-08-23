@@ -70,8 +70,28 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
 // Reducer Section
 let initialState = {};
-const reviewReducer = (state = initialState, action) => {
+const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
-
+    case CREATE_REVIEW: {
+      const newState = { ...state };
+      newState[action.review.id] = action.review;
+      return newState;
+    }
+    case LOAD_ALL_REVIEWS: {
+      const newState = { ...state };
+      action.reviews.forEach((review) => {
+        newState[review.id] = review;
+      })
+      return newState;
+    }
+    case DELETE_REVIEW: {
+      const newState = { ...state };
+      delete newState[action.reviewId];
+      return newState;
+    }
+    default:
+      return state;
   }
 }
+
+export default reviewsReducer;

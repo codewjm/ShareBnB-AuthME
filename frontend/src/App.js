@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignUpFormPage";
+import SignUpForm from "./components/SignUpFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SplashPage from "./components/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,8 +19,11 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/signup">
-          // could live within the signupformpage folder, those components will display if children of folder. 
-            <SignupFormPage />
+          // could live within the signupformpage folder, those components will display if children of folder.
+            <SignUpForm />
+          </Route>
+          <Route path="/">
+            <SplashPage />
           </Route>
         </Switch>
       )}

@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 
 // Actions Section - CRUD
 const LOAD_ALL_SPOTS = 'spots/getAllSpots'; // Read
+const LOAD_OWNER_SPOTS = 'spots/getOwnerSpots'; // Read
 const CREATE_SPOT = 'spots/createSpot'; // Create
 const LOAD_SPOT = 'spots/getSpot'; // Read
 const UPDATE_SPOT = 'spots/updateSpot'; // Update
@@ -15,10 +16,17 @@ const loadAll = (spots) => {
   };
 };
 
-const createOne = (spot) => {
+const loadOwner = (spots) => {
+  return {
+    type: LOAD_OWNER_SPOTS,
+    spots
+  }
+}
+
+const createOne = (newSpot) => {
   return {
     type: CREATE_SPOT,
-    spot
+    newSpot
   };
 };
 
@@ -29,10 +37,10 @@ const loadOne = (spot) => {
   };
 };
 
-const updateOne = (spot) => {
+const updateOne = (updateSpot) => {
   return {
     type: UPDATE_SPOT,
-    spot
+    updateSpot
   };
 };
 
@@ -52,17 +60,28 @@ export const getAllSpots = () => async (dispatch) => {
 
   if (res.ok) {
     const spots = await res.json();
-    dispatch(loadAll(spots));
+    console.log(spots)
+    dispatch(loadAll(spots.Spots));
   };
 };
 
+// Get all spots owned by current user
+export const getOwnerSpots = () => async (dispatch) => {
+  const res = await csrfFetch('/api/spots/current')
+
+  if (res.ok) {
+    const ownerSpots = await res.json();
+    dispatch(loadOwner(ownerSpots));
+  }
+}
+
 
 // Create a spot
-export const createSpot = (spot) => async (dispatch) => {
+export const createSpot = (newSpot) => async (dispatch) => {
   const res = await csrfFetch('/api/spots', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(spot)
+    body: JSON.stringify(newSpot)
   });
 
   if (res.ok) {
@@ -113,11 +132,18 @@ let initialState = {};
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_SPOTS: {
-      const newState = {...state}
+      const newState = { ...state }
       action.spots.forEach((spot) => {
         newState[spot.id] = spot
       });
-      return {newState};
+      return newState ;
+    }
+    case LOAD_OWNER_SPOTS: {
+      const newState = { ... state }
+      action.spots.forEach((spot) => {
+        newState[spot.id] = spot
+      });
+      return newState;
     }
     case CREATE_SPOT: {
       const newState = { ...state };

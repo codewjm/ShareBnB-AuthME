@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSpotFormModal from './CreateSpotForm';
+import CreateSpotForm from './CreateSpotForm';
 
 function CreateSpotFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -15,6 +15,6 @@ function CreateSpotFormModal() {
       )}
     </>
   );
-}
+};
 
 export default CreateSpotFormModal;

@@ -5,7 +5,7 @@ const SpotCard = ({ spot }) => {
   return (
     <div>
       <h1>
-        {spot?.name} // for race conditions
+        {spot?.name}
       </h1>
     </div>
   )

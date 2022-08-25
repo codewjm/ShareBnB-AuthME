@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import * as sessionActions from '../../store/session';
+import CreateSpotFormModal from "../CreateSpotFormModal";
 import './ProfileButton.css';
 
 function ProfileButton({ user }) {
@@ -40,19 +41,18 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <div className="profile-dropdown">
-
           <div
           className="dropdown-listings"
           onClick={() => history.push("view-your-listings")}
           >
-            View Your Listings
+            {/* View Your Listings */}
           </div>
 
           <div
           className="dropdown-reviews"
           onClick={() => history.push("view-your-listings")}
           >
-            View Your Reviews
+            {/* View Your Reviews */}
           </div>
 
           <div
@@ -60,7 +60,6 @@ function ProfileButton({ user }) {
           onClick={logout}>
           Log Out
           </div>
-
         </div>
       )}
     </>

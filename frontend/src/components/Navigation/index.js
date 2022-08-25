@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal"
 import ProfileButton from "./ProfileButton";
+import CreateSpotFormModal from "../CreateSpotFormModal";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -13,6 +14,7 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className="nav_bar_right">
+        <CreateSpotFormModal />
         <ProfileButton user={sessionUser} />
       </div>
     );

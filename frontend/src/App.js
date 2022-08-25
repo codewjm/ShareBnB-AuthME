@@ -5,6 +5,7 @@ import SignUpForm from "./components/SignUpFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
+import SingleSpotPage from "./components/SingleSpotPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +23,11 @@ function App() {
           // could live within the signupformpage folder, those components will display if children of folder.
             <SignUpForm />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <SplashPage />
+          </Route>
+          <Route exact path="/spots/:spotId">
+            <SingleSpotPage />
           </Route>
         </Switch>
       )}

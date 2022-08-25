@@ -88,6 +88,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
     const newSpot = await res.json();
     dispatch(createOne(newSpot));
   };
+  return res
 };
 
 
@@ -139,7 +140,7 @@ const spotsReducer = (state = initialState, action) => {
       return newState ;
     }
     case LOAD_OWNER_SPOTS: {
-      const newState = { ... state }
+      const newState = { ...state }
       action.spots.forEach((spot) => {
         newState[spot.id] = spot
       });
@@ -147,7 +148,7 @@ const spotsReducer = (state = initialState, action) => {
     }
     case CREATE_SPOT: {
       const newState = { ...state };
-      newState[action.spot.id] = action.spot;
+      newState[action.newSpot.id] = action.newSpot;
       return newState;
     }
     case LOAD_SPOT: {
@@ -157,7 +158,7 @@ const spotsReducer = (state = initialState, action) => {
     }
     case UPDATE_SPOT: {
       const newState = { ...state };
-      newState[action.spot.id] = action.spot;
+      newState[action.updateSpot.id] = action.updateSpot;
       return newState;
     }
     case DELETE_SPOT: {

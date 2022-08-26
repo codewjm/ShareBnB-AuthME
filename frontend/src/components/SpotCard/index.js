@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import './SpotCard.css';
+
 const SpotCard = ({ spot }) => {
 
   return (
-    <div>
+    <Link to={`/spots/${spot?.id}`}>
       <h1>
         {spot?.name}
       </h1>
-    </div>
+    </Link>
+
   )
 }
 

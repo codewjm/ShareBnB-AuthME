@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { updateSpot } from "../../store/spots"
+import "./EditSpotForm.css"
 
 // redirect is the same as history.push()
 function EditSpotForm({ spot }) {

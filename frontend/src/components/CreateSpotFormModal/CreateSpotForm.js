@@ -37,6 +37,7 @@ function CreateSpotForm() {
       country: country,
       lat: lat,
       lng: lng,
+      previewImage: previewImage,
       description: description,
       price: price
     }

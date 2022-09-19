@@ -1,0 +1,20 @@
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 385.75px;
+  width: 300.8px;
+  border: solid black 5px;
+}
+
+.preview-image-container {
+  width: 300.8px;
+  height: 285.75px;
+}
+
+.preview-image {
+  width: 300.8px;
+  height: 285.75px;
+}

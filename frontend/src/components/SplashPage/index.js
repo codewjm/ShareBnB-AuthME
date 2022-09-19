@@ -13,16 +13,13 @@ const SplashPage = () => {
   }, [dispatch])
 
   return (
-    <>
-      <div>
-        <div>
-          <h1> Splash Page </h1>
+
+        <div className="card-positions">
           {allSpots.map((spot) => (
-            <SpotCard spot={spot}/>
+            <SpotCard key={spot?.id} spot={spot}/>
           ))}
         </div>
-      </div>
-    </>
+
   )
 }
 

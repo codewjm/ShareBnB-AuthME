@@ -82,7 +82,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newSpot)
-  });
+  }) // add a cacth for an error message
 
   if (res.ok) {
     const newSpot = await res.json();
@@ -109,7 +109,7 @@ export const updateSpot = (spotId, spot) => async (dispatch) => {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(spot)
-  });
+  })
 
   if (res.ok) {
     const spot = await res.json();

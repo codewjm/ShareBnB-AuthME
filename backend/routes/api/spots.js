@@ -75,7 +75,7 @@ router.get('/', validateQuery, async (req, res) => {
 
     const avgRating = reviewData[0].dataValues.avgStars;
     if (!avgRating) {
-      thisSpot.avgRating = "Spot is not yet rated"
+      thisSpot.avgRating = "0.00"
     } else {
       thisSpot.avgRating = parseInt(Number(avgRating).toFixed(1));
     }

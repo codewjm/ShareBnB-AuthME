@@ -1,3 +1,11 @@
+.signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70px;
+  cursor: pointer;
+}
+
 ul.signup_error {
   color: red;
 }

@@ -1,0 +1,49 @@
+.site-logo {
+  height: 45px;
+}
+
+.nav-container {
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 135px;
+  margin-right: 135px;
+}
+
+.login-signup-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 400px; */
+  margin-right: 115px;
+}
+
+.login-button {
+  display: flex;
+  margin: 20px;
+}
+
+.signup-button {
+  display:flex;
+  margin: 20px;
+}
+
+#root {
+  text-decoration: none;
+  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+  sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

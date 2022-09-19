@@ -5,6 +5,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal"
 import ProfileButton from "./ProfileButton";
 import CreateSpotFormModal from "../CreateSpotFormModal";
+import siteLogo from "./SharesBnB-heart.png"
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -21,23 +22,26 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
-        <SignUpFormModal />
+        <div className="login-signup-container">
+          <div className="login-button">
+            <LoginFormModal />
+          </div>
+          <div className="signup-button">
+            <SignUpFormModal />
+          </div>
+        </div>
       </>
     );
   };
 
   return (
-    <div className="navBar">
-      <ul>
-        <li>
+    <div className="nav-container">
+      <div className="navBar">
           <NavLink exact to="/">
-            SharesBnB
+            <img src={siteLogo} className="site-logo" />
           </NavLink>
-          <NavLink exact to="/">Home</NavLink>
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
+      </div>
+      {isLoaded && sessionLinks}
     </div>
   );
 };

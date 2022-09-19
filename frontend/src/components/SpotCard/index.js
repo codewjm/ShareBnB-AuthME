@@ -9,18 +9,13 @@ const SpotCard = ({ spot }) => {
         <div className="preview-image-container">
           <img src={spot?.previewImage} className="preview-image"></img>
         </div>
-        <div>
-          {spot?.name}
+        <div clsassName="spot-card-details">
+          <div>{spot?.city}, {spot?.state}</div>
+          <div>{spot?.avgRating}</div>
+          <div>${spot?.price} night</div>
         </div>
-        <div>{spot?.avgRating}</div>
-        <div>{spot?.city}</div>
-        <div>{spot?.state}</div>
-        <div>{spot?.price}</div>
-        <div>night</div>
-
       </Link>
     </div>
-
   )
 }
 

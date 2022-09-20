@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   height: 385.75px;
   width: 300.8px;
-  border: solid black 5px;
+  /* border: solid black 5px; */
 }
 
 .preview-image-container {
@@ -17,6 +17,7 @@
 .preview-image {
   width: 300.8px;
   height: 285.75px;
+  border-radius: 5%;
 }
 
 .spot-card-details {

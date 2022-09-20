@@ -75,9 +75,9 @@ router.get('/', validateQuery, async (req, res) => {
 
     const avgRating = reviewData[0].dataValues.avgStars;
     if (!avgRating) {
-      thisSpot.avgRating = "0.00"
+      thisSpot.avgRating = "New"
     } else {
-      thisSpot.avgRating = parseInt(Number(avgRating).toFixed(1));
+      thisSpot.avgRating = parseInt(Number(avgRating).toFixed(2));
     }
 
     // const avgRating = reviewData[0].dataValues.avgStars;
@@ -129,7 +129,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
     if (!avgRating) {
       spot.dataValues.avgRating = "Spot is not yet rated"
     } else {
-      spot.dataValues.avgRating = parseInt(Number(avgRating).toFixed(1));
+      spot.dataValues.avgRating = Number(avgRating).toFixed(2);
     }
     const image = await Image.findOne({
       where: {
@@ -198,7 +198,7 @@ router.get('/:spotId', async (req, res, next) => {
     spot.dataValues.avgStarRating = "Spot is not yet rated"
   } else {
     spot.dataValues.numReviews = parseInt(Number(numReviews).toFixed(0));
-    spot.dataValues.avgStarRating = parseInt(Number(avgStarRating).toFixed(1));
+    spot.dataValues.avgStarRating = Number(avgStarRating).toFixed(2);
   }
   res.json(spot)
 });

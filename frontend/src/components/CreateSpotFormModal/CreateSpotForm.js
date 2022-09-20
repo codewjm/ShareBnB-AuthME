@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 // import * as sessionActions from "../../store/session";
 import "./CreateSpotForm.css";
 import { createSpot } from "../../store/spots"
@@ -10,7 +10,7 @@ function CreateSpotForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   // implement if Redirect is giving you issues
-  // const history = useHistory()
+  const history = useHistory()
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -48,6 +48,8 @@ function CreateSpotForm() {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
+
+    history.push(`/`)
   }
 
 

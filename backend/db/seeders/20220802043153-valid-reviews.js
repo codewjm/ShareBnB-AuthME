@@ -29,10 +29,34 @@ module.exports = {
         stars: 5
       },
       {
-        userId: 4,
+        userId: 5,
         spotId: 5,
         review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
         stars: 5
+      },
+      {
+        userId: 4,
+        spotId: 5,
+        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        stars: 4
+      },
+      {
+        userId: 4,
+        spotId: 3,
+        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        stars: 3
+      },
+      {
+        userId: 4,
+        spotId: 2,
+        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        stars: 3
+      },
+      {
+        userId: 4,
+        spotId: 1,
+        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        stars: 1
       },
     ]
     return queryInterface.bulkInsert('Reviews', validReviews);

@@ -71,6 +71,7 @@ export const getOwnerSpots = () => async (dispatch) => {
 
   if (res.ok) {
     const ownerSpots = await res.json();
+    console.log("getOwnerSpots thunk:", ownerSpots)
     dispatch(loadOwner(ownerSpots));
   }
 }
@@ -141,7 +142,8 @@ const spotsReducer = (state = initialState, action) => {
     }
     case LOAD_OWNER_SPOTS: {
       const newState = { ...state }
-      action.spots.forEach((spot) => {
+      // console.log("Load owners reducer:", action.spots.Spots)
+      action.spots.Spots.forEach((spot) => {
         newState[spot.id] = spot
       });
       return newState;

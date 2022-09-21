@@ -6,12 +6,16 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import SingleSpotPage from "./components/SingleSpotPage";
+import OwnerSpotsPage from "./components/OwnerSpotsPage";
 
 function App() {
   const dispatch = useDispatch();
+
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+      .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
@@ -28,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/spots/:spotId">
             <SingleSpotPage />
+          </Route>
+          <Route path="/my-listings">
+            <OwnerSpotsPage />
           </Route>
         </Switch>
       )}

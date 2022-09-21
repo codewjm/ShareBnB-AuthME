@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import * as sessionActions from '../../store/session';
-import CreateSpotFormModal from "../CreateSpotFormModal";
+// import CreateSpotFormModal from "../CreateSpotFormModal";
 import './ProfileButton.css';
 
 function ProfileButton({ user }) {
@@ -35,17 +35,17 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className="menu" onClick={openMenu}>
-        <i className="fas fa-bars nav_menu_bars"></i>
-        <i className="fas fa-user-circle  nav_user_icon" />
-      </button>
+      <div className="menu" onClick={openMenu}>
+        <i className="fas fa-bars" />
+        <i className="fas fa-user-circle" />
+      </div>
       {showMenu && (
         <div className="profile-dropdown">
           <div
           className="dropdown-listings"
-          onClick={() => history.push("view-your-listings")}
+          onClick={() => history.push("/my-listings")}
           >
-            {/* View Your Listings */}
+            My Listings
           </div>
 
           <div

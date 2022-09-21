@@ -88,6 +88,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
   if (res.ok) {
     const newSpot = await res.json();
     dispatch(createOne(newSpot));
+    return newSpot
   };
   return res
 };
@@ -143,9 +144,7 @@ const spotsReducer = (state = initialState, action) => {
     case LOAD_OWNER_SPOTS: {
       const newState = { ...state }
       // console.log("Load owners reducer:", action.spots.Spots)
-      action.spots.Spots.forEach((spot) => {
-        newState[spot.id] = spot
-      });
+      newState.userSpots = action.spots.Spots
       return newState;
     }
     case CREATE_SPOT: {

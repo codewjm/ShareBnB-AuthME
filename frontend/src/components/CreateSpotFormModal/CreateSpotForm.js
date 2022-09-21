@@ -43,12 +43,16 @@ function CreateSpotForm() {
     }
     setErrors([]);
 
-    await dispatch(createSpot(newSpotData)).catch(async (res) => {
+    await dispatch(createSpot(newSpotData))
+    .then((res) => {
+      console.log(res.id)
+    history.push(`/spots/${res.id}`)
+    })
+    .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
 
-    history.push(`/`)
   }
 
 

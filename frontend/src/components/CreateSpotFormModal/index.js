@@ -5,6 +5,7 @@ import CreateSpotForm from './CreateSpotForm';
 function CreateSpotFormModal() {
   const [showModal, setShowModal] = useState(false);
 
+
   return (
     <>
       <button onClick={() => setShowModal(true)}>Create A Spot</button>

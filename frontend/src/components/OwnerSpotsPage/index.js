@@ -7,30 +7,31 @@ import "../SpotCard/SpotCard.css";
 
 export default function OwnerSpotsPage() {
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const dispatch = useDispatch();
   const sessionUser = useSelector((state => state.session.user))
-  const spots = useSelector((state) => state.spots)
-  const ownerSpots = Object.values(spots)
+  const spots = useSelector((state) => state.spots.userSpots)
+  // const ownerSpots = Object.values(spots)
 //  const spot = ownerSpots[0]
 //  console.log("spot at index 0", spot)
-console.log("ownerSpots:", ownerSpots)
+// console.log("ownerSpots...............:", ownerSpots)
+console.log("spots----------:", spots)
+
 
   useEffect(() => {
     dispatch(getOwnerSpots())
-      .then(() => setIsLoaded(true))
-  }, [dispatch, isLoaded])
+  }, [dispatch])
 
   if (!sessionUser) {
     return <Redirect to="/" />
   }
 
+  if(!spots) return null;
+
   return (
       <div>
         <h1>My Listings</h1>
         <div className="card-container">
-          {ownerSpots.map((spot) => (
+          {spots.map((spot) => (
             <SpotCard key={spot?.id} spot={spot} />
           ))}
         </div>

@@ -6,11 +6,15 @@ import SpotCard from '../SpotCard';
 
 const SplashPage = () => {
   const dispatch = useDispatch();
-  const allSpots = useSelector((state) => Object.values(state.spots));
+  const allSpotsObj = useSelector((state) => state.spots);
+  const allSpots = Object.values(allSpotsObj);
+  console.log("all spots: ----- ", allSpots)
 
   useEffect(() => {
     dispatch(getAllSpots())
   }, [dispatch])
+
+  if(!allSpots.length) return null;
 
   return (
 

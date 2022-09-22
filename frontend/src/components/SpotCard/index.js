@@ -3,6 +3,9 @@ import './SpotCard.css';
 
 const SpotCard = ({ spot }) => {
 
+  // added to stop that empty spot from showing
+  if(!spot) return null
+
   return (
     <div className="card-container">
       <Link to={`/spots/${spot?.id}`}>

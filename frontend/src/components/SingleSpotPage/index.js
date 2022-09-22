@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpot, deleteSpot } from "../../store/spots";
+import { getSpot, deleteSpot, getAllSpots } from "../../store/spots";
 import EditSpotFormModal from "../EditSpotFormModal";
 
 function SingleSpotPage() {
@@ -20,8 +20,11 @@ function SingleSpotPage() {
 
   const removeSpot = async (e) => {
     e.preventDefault();
-    await dispatch(deleteSpot(spotId));
-    history.push("/user/spots");
+    await dispatch(deleteSpot(spotId))
+    // .then(() => {
+    //   dispatch(getAllSpots())
+    // });
+    history.push("/my-listings");
   };
 
   return isLoaded && (

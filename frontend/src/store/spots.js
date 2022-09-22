@@ -139,6 +139,10 @@ const spotsReducer = (state = initialState, action) => {
       action.spots.forEach((spot) => {
         newState[spot.id] = spot
       });
+      if(newState.userSpots) {
+        delete newState.userSpots
+      }
+      console.log("getAllSpots new state---", newState)
       return newState ;
     }
     case LOAD_OWNER_SPOTS: {

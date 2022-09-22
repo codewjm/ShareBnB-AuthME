@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch, } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector, } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import { updateSpot } from "../../store/spots"
 import "./EditSpotForm.css"
 
 // redirect is the same as history.push()
-function EditSpotForm({ spot }) {
+function EditSpotForm() {
   const dispatch = useDispatch();
+  const { spotId } = useParams()
+  const userSpots = useSelector((state) => state.spots)
+  const spot = userSpots[spotId]
   // implement if history.push is giving you issues
   // const sessionUser = useSelector((state) => state.session.user);
-  const history = useHistory()
+  // const history = useHistory()
   const [name, setName] = useState(spot?.name);
   const [price, setPrice] = useState(spot?.price);
   const [description, setDescription] = useState(spot?.description);
@@ -19,7 +22,6 @@ function EditSpotForm({ spot }) {
   const [country, setCountry] = useState(spot?.country);
   const [lat, setLat] = useState(spot?.lat);
   const [lng, setLng] = useState(spot?.lng);
-  const [previewImage, setPreviewImage] = useState(spot?.previewImage);
   const [errors, setErrors] = useState([]);
 
 
@@ -35,10 +37,21 @@ function EditSpotForm({ spot }) {
       country: country,
       lat: lat,
       lng: lng,
-      previewImage: previewImage,
       description: description,
       price: price
+
+      // name,
+      // address,
+      // city,
+      // state,
+      // country,
+      // lat,
+      // lng,
+      // description,
+      // price
     }
+
+
 
 
     await dispatch(updateSpot(spot.id, editedSpotData))
@@ -46,7 +59,7 @@ function EditSpotForm({ spot }) {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
-    await history.push(`/spots/${spot.id}`)
+    // await history.push(`/spots/${spot.id}`)
   }
 
 
@@ -134,16 +147,6 @@ return (
           required
         />
       </div>
-    <label>
-      <h4>Edit Image</h4>
-      <input
-        type="text"
-        value={previewImage}
-        placeholder="url"
-        onChange={(e) => setPreviewImage(e.target.value)}
-        required
-      />
-    </label>
     <label>
     <h4>Edit Spot Price</h4>
       <input

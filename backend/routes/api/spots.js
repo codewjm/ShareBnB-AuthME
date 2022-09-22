@@ -127,7 +127,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
 
     const avgRating = reviewData[0].dataValues.avgStars;
     if (!avgRating) {
-      spot.dataValues.avgRating = "Spot is not yet rated"
+      spot.dataValues.avgRating = "0.00"
     } else {
       spot.dataValues.avgRating = Number(avgRating).toFixed(2);
     }
@@ -195,7 +195,7 @@ router.get('/:spotId', async (req, res, next) => {
   if (!numReviews) {
     spot.dataValues.numReviews = 0
   } if (!avgStarRating) {
-    spot.dataValues.avgStarRating = "Spot is not yet rated"
+    spot.dataValues.avgStarRating = "0.00"
   } else {
     spot.dataValues.numReviews = Number(numReviews).toFixed(0);
     spot.dataValues.avgStarRating = Number(avgStarRating).toFixed(2);

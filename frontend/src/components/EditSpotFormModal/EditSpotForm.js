@@ -28,8 +28,9 @@ function EditSpotForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    // console.log("spot image", spot.Images)
 
-    const editedSpotData = {
+const editedSpotData = {
       name: name,
       address: address,
       city: city,
@@ -38,7 +39,8 @@ function EditSpotForm() {
       lat: lat,
       lng: lng,
       description: description,
-      price: price
+      price: price,
+      // Images: spot.Images
 
       // name,
       // address,
@@ -53,11 +55,16 @@ function EditSpotForm() {
 
 
 
-
     await dispatch(updateSpot(spot.id, editedSpotData))
     .catch(async (res) => {
+      // const data = await res.json();
       const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
+      console.log("Error Data:---------", data)
+      console.log("Error Data.ERROR:---------", data.errors)
+      if (data && data.errors) {
+        setErrors(Object.values(data.errors));
+        console.log("my errors: ---------- ", errors)
+      }
     });
     // await history.push(`/spots/${spot.id}`)
   }
@@ -66,7 +73,7 @@ function EditSpotForm() {
 return (
   <form onSubmit={handleSubmit}>
     <ul className="newSpot_error">
-      {Object.values(errors).map((error, idx) => (
+      {errors.map((error, idx) => (
         <li key={idx}>{error}</li>
       ))}
     </ul>

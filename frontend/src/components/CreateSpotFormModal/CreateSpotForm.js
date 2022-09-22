@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import "./CreateSpotForm.css";
 import { createSpot } from "../../store/spots"
 
+
 // redirect is the same as history.push()
 function CreateSpotForm() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function CreateSpotForm() {
 
 
   if (!sessionUser) return <Redirect to="/signup" />;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,6 +56,7 @@ function CreateSpotForm() {
     });
 
   }
+
 
 
   return (

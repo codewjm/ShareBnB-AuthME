@@ -153,18 +153,26 @@ const spotsReducer = (state = initialState, action) => {
     }
     case CREATE_SPOT: {
       const newState = { ...state };
-      newState[action.newSpot.id] = action.newSpot;
+      // newState[action.newSpot.id] = action.newSpot;
+      newState.userSpots[action.newSpot.id] = action.newSpot;
+      // console.log("NewState-createSpotReducer", newState)
+      // console.log("newSpotId-createSpotReducer", action.newSpot.id)
       return newState;
     }
     case LOAD_SPOT: {
       const newState = { ...state };
+      // console.log("OnLoad spot",  newState)
       newState[action.spot.id] = action.spot;
+      // console.log("Loaded spot",  newState)
       return newState;
     }
     case UPDATE_SPOT: {
-      const newState = { ...state };
-      newState[action.updateSpot.id] = action.updateSpot;
-      return newState;
+      const copyState = { ...state };
+      // console.log("Before Updating State",  state)
+      copyState[action.updateSpot.id] = {...copyState[action.updateSpot.id], ...action.updateSpot}
+      // console.log("After Updating State",  copyState)
+
+      return copyState;
     }
     case DELETE_SPOT: {
       const newState = { ...state };

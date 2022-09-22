@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot, deleteSpot, getAllSpots } from "../../store/spots";
 import EditSpotFormModal from "../EditSpotFormModal";
@@ -21,16 +21,19 @@ function SingleSpotPage() {
   const removeSpot = async (e) => {
     e.preventDefault();
     await dispatch(deleteSpot(spotId))
+    .then(() => {
+      history.push("/my-listings");
+    })
+    .catch((e) => console.log(e))
     // .then(() => {
     //   dispatch(getAllSpots())
     // });
-    history.push("/my-listings");
+    //
   };
+  if(!spot) return null;
+  // if(!spotId) return <Redirect to="/my-listings" />
 
-
-
-
-  return isLoaded && (
+  return isLoaded && spot && (
     <>
       <div className="spot-header-container">
         <div className="spot-name-header">{spot?.name}</div>

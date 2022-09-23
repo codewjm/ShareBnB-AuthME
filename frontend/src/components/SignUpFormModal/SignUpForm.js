@@ -36,24 +36,23 @@ function SignUpForm() {
       });
     }
     return setErrors({
-      password: "Confirm Password field must be the same as the Password field",
+      password: "Confirmation Password must match Password "
     });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul className="signup_error">
+      <div className="signup_error">
         {Object.values(errors).map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <div key={idx}>{error}</div>
         ))}
-      </ul>
+      </div>
       <label>
         First Name
         <input
           type="text"
           value={firstName}
           onChange={(e) => setFirstname(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -62,7 +61,6 @@ function SignUpForm() {
           type="text"
           value={lastName}
           onChange={(e) => setLastname(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -71,7 +69,6 @@ function SignUpForm() {
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -80,7 +77,6 @@ function SignUpForm() {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -89,7 +85,6 @@ function SignUpForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -98,7 +93,6 @@ function SignUpForm() {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          required
         />
       </label>
       <button type="submit">Sign Up</button>

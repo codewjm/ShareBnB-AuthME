@@ -8,12 +8,12 @@ const SplashPage = () => {
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots);
   const allSpots = Object.values(allSpotsObj);
-  console.log("all spots: ----- ", allSpots)
+  // console.log("allSpots: ----- ", allSpots)
 
   useEffect(() => {
     dispatch(getAllSpots())
   }, [dispatch])
-
+  // console.log("allSpotsObj", allSpotsObj)
   if(!allSpots.length) return null;
 
   return (

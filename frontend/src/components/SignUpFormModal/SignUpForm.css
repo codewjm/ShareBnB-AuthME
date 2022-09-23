@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-ul.signup_error {
+.signup_error {
   color: red;
 }
 

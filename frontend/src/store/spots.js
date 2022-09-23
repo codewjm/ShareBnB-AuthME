@@ -60,7 +60,7 @@ export const getAllSpots = () => async (dispatch) => {
 
   if (res.ok) {
     const spots = await res.json();
-    console.log(spots)
+    // console.log(spots)
     dispatch(loadAll(spots.Spots));
   };
 };
@@ -71,7 +71,7 @@ export const getOwnerSpots = () => async (dispatch) => {
 
   if (res.ok) {
     const ownerSpots = await res.json();
-    console.log("getOwnerSpots thunk:", ownerSpots)
+    // console.log("getOwnerSpots thunk:", ownerSpots)
     dispatch(loadOwner(ownerSpots));
   }
 }
@@ -90,7 +90,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
     dispatch(createOne(newSpot));
     return newSpot
   };
-  return res
+  // return res
 };
 
 
@@ -139,10 +139,21 @@ const spotsReducer = (state = initialState, action) => {
       action.spots.forEach((spot) => {
         newState[spot.id] = spot
       });
-      if(newState.userSpots) {
-        delete newState.userSpots
-      }
-      console.log("getAllSpots new state---", newState)
+
+//!!!!!!!!!!! Creates a res.json() problem in console
+// no allowing use to create a spot from the splashpage
+// but will allow from the my listings page
+// likely due to the deletion of the userSpots key/array
+// thats my suspicion but I have had multiple people look at this
+// and absolutely nobodu can figure it out. I've poured into stackoverflow
+// a solution and when we take away this code below, my skeleton spot card
+// issue comes back. Solve one, break the other.
+
+      // if(newState.userSpots) {
+      //   delete newState.userSpots
+      // }
+
+      // console.log("getAllSpots new state---", newState)
       return newState ;
     }
     case LOAD_OWNER_SPOTS: {
@@ -153,10 +164,9 @@ const spotsReducer = (state = initialState, action) => {
     }
     case CREATE_SPOT: {
       const newState = { ...state };
+
       // newState[action.newSpot.id] = action.newSpot;
       newState.userSpots[action.newSpot.id] = action.newSpot;
-      // console.log("NewState-createSpotReducer", newState)
-      // console.log("newSpotId-createSpotReducer", action.newSpot.id)
       return newState;
     }
     case LOAD_SPOT: {

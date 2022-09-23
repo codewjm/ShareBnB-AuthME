@@ -11,6 +11,7 @@ function CreateSpotForm() {
   const sessionUser = useSelector((state) => state.session.user);
   // implement if Redirect is giving you issues
   const history = useHistory()
+  const newSpot = useSelector((state) => state.spots.userSpots)
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -45,16 +46,26 @@ function CreateSpotForm() {
     }
     setErrors([]);
 
-    await dispatch(createSpot(newSpotData))
-    .then((res) => {
-      console.log(res.id)
-    history.push(`/spots/${res.id}`)
-    })
-    .catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    // .then((res) => {
+    //   console.log(res.id)
+    // history.push(`/spots/${res.id}`)
+    // })
 
+    const createdSpot = await dispatch(createSpot(newSpotData))
+    .catch(async (res) => {
+        if(res) {
+          // console.log("res------", res)
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        }
+      })
+    // console.log("CreatedSpot-----", createdSpot)
+    if (createdSpot) {
+      let spot = newSpot[newSpot.length - 1]
+      // console.log("newSpot----", newSpot)
+      history.push(`/spots/${spot.id}`)
+    }
+    // history.push(`/spots/${res.id}`)
   }
 
 
@@ -73,7 +84,6 @@ function CreateSpotForm() {
           value={name}
           placeholder="New Spot Name"
           onChange={(e) => setName(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -83,7 +93,6 @@ function CreateSpotForm() {
           value={description}
           placeholder="New Spot Description"
           onChange={(e) => setDescription(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -95,7 +104,6 @@ function CreateSpotForm() {
           value={address}
           placeholder="New Spot Address"
           onChange={(e) => setAddress(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -104,7 +112,6 @@ function CreateSpotForm() {
           value={city}
           placeholder="New Spot City"
           onChange={(e) => setCity(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -113,7 +120,6 @@ function CreateSpotForm() {
           value={state}
           placeholder="New Spot State"
           onChange={(e) => setState(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -122,7 +128,6 @@ function CreateSpotForm() {
           value={country}
           placeholder="New Spot Country"
           onChange={(e) => setCountry(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -131,7 +136,6 @@ function CreateSpotForm() {
           value={lat}
           placeholder="New Spot Latitude"
           onChange={(e) => setLat(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -140,7 +144,6 @@ function CreateSpotForm() {
           value={lng}
           placeholder="New Spot Longitude"
           onChange={(e) => setLng(e.target.value)}
-          required
         />
       </div>
       <label>
@@ -150,7 +153,6 @@ function CreateSpotForm() {
           value={previewImage}
           placeholder="url"
           onChange={(e) => setPreviewImage(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -160,7 +162,6 @@ function CreateSpotForm() {
           value={price}
           placeholder="$0.00"
           onChange={(e) => setPrice(e.target.value)}
-          required
         />
       </label>
       <button type="submit">Create New Spot</button>

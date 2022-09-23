@@ -1,50 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useHistory, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import './LoginForm.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory();
+  // const history = useHistory();
+
+
+// useEffect(() => {
+//   const errors = []
+//   if (credential.length < 1 ) errors.push("Invalid Email or Username")
+//   if (password.length < 1) errors.push("Enter your password")
+//   setErrors(errors)
+// }, [credential, password])
 
   const demoLogin = (e) => {
     e.preventDefault()
-    return dispatch(sessionActions.login({ credential: "asilvero98@user.io", password: "password1" }))
+    return dispatch(sessionActions.login({
+      credential: "asilvero98@user.io",
+      password: "password1"
+    }))
   }
+
+  if (sessionUser) return <Redirect to="/" />;
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
-    .then(() => {
-      history.push("/")
-    })
     .catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
+        async (res) => {
+          const data = await res.json();
+          console.log("data-----", data)
+          console.log("data.message-----", data.message)
+          console.log("data.errors-----", data.errors)
+          // console.log("OBJECT.VAL(data.errors)-----", Object.values(data.errors))
+
+          if (!data.errors && data.message) {
+            return setErrors([data.message])
+          }
+          else if (data && data.errors) {
+            return setErrors(Object.values(data.errors))
+          }
+        }
+      );
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
+      <div>
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <div key={idx}>{error}</div>
         ))}
-      </ul>
+      </div>
       <label>
         Username or Email
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
         />
       </label>
       <label>
@@ -53,10 +74,10 @@ function LoginForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit" onClick={(e) => handleSubmit(e)}>Log In</button>
+      {/* // disabled={errors.length > 0} */}
       <button onClick={demoLogin} className="login-buttons">Demo User</button>
 
     </form>

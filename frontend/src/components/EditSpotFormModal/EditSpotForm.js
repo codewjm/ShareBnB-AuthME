@@ -72,11 +72,11 @@ const editedSpotData = {
 
 return (
   <form onSubmit={handleSubmit}>
-    <ul className="newSpot_error">
+    <div className="newSpot_error">
       {errors.map((error, idx) => (
-        <li key={idx}>{error}</li>
+        <div key={idx}>{error}</div>
       ))}
-    </ul>
+    </div>
     <label>
         <h4>Edit Spot Name</h4>
       <input
@@ -84,7 +84,6 @@ return (
         value={name}
         placeholder = "New Spot Name"
         onChange={(e) => setName(e.target.value)}
-        required
       />
     </label>
     <label>
@@ -94,7 +93,6 @@ return (
         value={description}
         placeholder = "New Spot Description"
         onChange={(e) => setDescription(e.target.value)}
-        required
       />
     </label>
     <label>
@@ -106,7 +104,6 @@ return (
         value={address}
         placeholder = "Spot Address"
         onChange={(e) => setAddress(e.target.value)}
-        required
       />
     </div>
     <div>
@@ -115,7 +112,6 @@ return (
         value={city}
         placeholder = "Spot City"
         onChange={(e) => setCity(e.target.value)}
-        required
       />
     </div>
     <div>
@@ -124,7 +120,6 @@ return (
         value={state}
         placeholder = "Spot State"
         onChange={(e) => setState(e.target.value)}
-        required
       />
     </div>
     <div>
@@ -133,7 +128,6 @@ return (
         value={country}
         placeholder = "Spot Country"
         onChange={(e) => setCountry(e.target.value)}
-        required
       />
     </div>
     <div>
@@ -142,7 +136,6 @@ return (
           value={lat}
           placeholder="Spot Latitude"
           onChange={(e) => setLat(e.target.value)}
-          required
         />
       </div>
       <div>
@@ -151,7 +144,6 @@ return (
           value={lng}
           placeholder="Spot Longitude"
           onChange={(e) => setLng(e.target.value)}
-          required
         />
       </div>
     <label>
@@ -161,7 +153,6 @@ return (
         value={price}
         placeholder="$0.00"
         onChange={(e) => setPrice(e.target.value)}
-        required
       />
     </label>
     <button type="submit">Sumbit Edits</button>

@@ -21,19 +21,19 @@ function SingleSpotPage() {
   const removeSpot = async (e) => {
     e.preventDefault();
     await dispatch(deleteSpot(spotId))
-    .then(() => {
-      history.push("/my-listings");
-    })
-    .catch((e) => console.log(e))
+      .then(() => {
+        history.push("/my-listings");
+      })
+      .catch((e) => console.log(e))
     // .then(() => {
     //   dispatch(getAllSpots())
     // });
     //
   };
-  if(!spot) return null;
+  if (!spot) return null;
   // if(!spotId) return <Redirect to="/my-listings" />
 
-  return isLoaded && spot && (
+  return (isLoaded && spot && (
     <>
       <div className="spot-header-container">
         <div className="spot-name-header">{spot?.name}</div>
@@ -73,6 +73,7 @@ function SingleSpotPage() {
         }
       </div>
     </>
+    )
   )
 }
 

@@ -131,7 +131,7 @@ export const deleteSpot = (spotId) => async (dispatch) => {
 };
 
 // Reducer Section
-let initialState = {};
+let initialState = {userSpots: []};
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_SPOTS: {
@@ -141,7 +141,7 @@ const spotsReducer = (state = initialState, action) => {
       });
 
 //!!!!!!!!!!! Creates a res.json() problem in console
-// no allowing use to create a spot from the splashpage
+// not allowing use to create a spot from the splashpage
 // but will allow from the my listings page
 // likely due to the deletion of the userSpots key/array
 // thats my suspicion but I have had multiple people look at this
@@ -166,7 +166,8 @@ const spotsReducer = (state = initialState, action) => {
       const newState = { ...state };
 
       // newState[action.newSpot.id] = action.newSpot;
-      newState.userSpots[action.newSpot.id] = action.newSpot;
+      // newState.userSpots[action.newSpot.id] = action.newSpot;
+      // newState.userSpots.push(action.newSpot)
       return newState;
     }
     case LOAD_SPOT: {

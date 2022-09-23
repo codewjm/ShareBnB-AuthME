@@ -23,7 +23,7 @@ const loadAll = (reviews) => {
 const deleteOne = (reviewId) => {
   return {
     type: DELETE_REVIEW,
-    reviewId
+    // reviewId
   }
 }
 
@@ -51,7 +51,7 @@ export const getAllReviews = (spotId) => async (dispatch) => {
 
   if (res.ok) {
     const reviews = await res.json();
-    dispatch(loadAll(reviews))
+    dispatch(loadAll(reviews.Reviews))
   };
 };
 

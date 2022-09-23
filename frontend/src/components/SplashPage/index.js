@@ -4,11 +4,28 @@ import { getAllSpots } from '../../store/spots';
 import './SplashPage.css';
 import SpotCard from '../SpotCard';
 
+
+/*
+
+*/
+const filteredSpots = (spotsState) => {
+  //get all the object entries (the key-value pairs)
+  return Object.entries(spotsState).filter((entry) => {
+    // filtering key-value pairs array into a new array without the userSpots entry
+    return entry[0] !== "userSpots"
+    //
+  }).map(entry => entry[1])
+}
+
+
 const SplashPage = () => {
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots);
-  const allSpots = Object.values(allSpotsObj);
-  // console.log("allSpots: ----- ", allSpots)
+  // new filtered spots array
+  const allSpots = filteredSpots(allSpotsObj);
+  // const allSpots = Object.values(allSpotsObj);
+
+console.log("allSpots------", allSpots)
 
   useEffect(() => {
     dispatch(getAllSpots())

@@ -3,6 +3,8 @@ import { useParams, useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot, deleteSpot, getAllSpots } from "../../store/spots";
 import EditSpotFormModal from "../EditSpotFormModal";
+import reviewsReducer, { getAllReviews } from "../../store/reviews";
+import ReviewCard from "../ReviewCard"
 
 function SingleSpotPage() {
 
@@ -12,10 +14,12 @@ function SingleSpotPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const spot = useSelector((state) => (state.spots[spotId]));
   const sessionUser = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => Object.values(state.reviews));
 
   useEffect(() => {
     dispatch(getSpot(spotId))
-      .then(() => setIsLoaded(true))
+    .then(() => setIsLoaded(true))
+    dispatch(getAllReviews(spotId))
   }, [dispatch, spotId]);
 
   const removeSpot = async (e) => {
@@ -38,7 +42,7 @@ function SingleSpotPage() {
       <div className="spot-header-container">
         <div className="spot-name-header">{spot?.name}</div>
         <div className="spot-details-header">
-          <div className="spot-rating-review">{!spot.avgStarRating ? "0.00" : spot.avgStarRating} {!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
+          <div className="spot-rating-review fa fa-star fa-xs">{!spot.avgStarRating ? "0.00" : spot.avgStarRating} {!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
           <div className="spot-location">{spot?.city}, {spot?.state}, {spot?.country}</div>
         </div>
       </div>
@@ -52,16 +56,19 @@ function SingleSpotPage() {
         <div className="spot-description">{spot?.description}</div>
         <div className="spot-price-rating-reviews">
           <div className="spot-price">${spot?.price} night</div>
-          <div className="spot-rating-a">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
+          <div className="spot-rating-a fa fa-star fa-xs">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
           <div className="spot-reviews-a">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
         </div>
       </div>
       <div className="spot-reviews-header">
-        <div className="spot-rating-b">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
+        <div className="spot-rating-b fa fa-star fa-xs">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
         <div className="spot-reviews-b">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
       </div>
       <div className="all-spot-reviews">
-        {/* all reviews go here */}
+        {reviews && (
+          reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} user={sessionUser}/>
+          ) ))}
       </div>
       <div>
         {sessionUser ?

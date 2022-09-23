@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import SingleSpotPage from "./components/SingleSpotPage";
 import OwnerSpotsPage from "./components/OwnerSpotsPage";
+import ReviewForm from "./components/ReviewSpotModal/ReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/my-listings">
             <OwnerSpotsPage />
+          </Route>
+          <Route path="/testing">
+            <ReviewForm />
           </Route>
         </Switch>
       )}

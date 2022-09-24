@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 const CREATE_REVIEW = 'reviews/createReview';
 const LOAD_ALL_REVIEWS = 'reviews/getAllReviews';
 const DELETE_REVIEW = 'reviews/deleteReview';
+const LOAD_USER_REVIEWS = 'reviews/getUserReviews'
 
 // Action Creators Section
 const createOne = (review) => {
@@ -27,12 +28,22 @@ const deleteOne = (reviewId) => {
   }
 }
 
+const loadUserReviews = (userReviews) => {
+   return {
+    type: LOAD_USER_REVIEWS,
+    userReviews
+   }
+}
+
 
 // Thunks Section
 
 // Create a review for a spot by Spot's Id
 export const createReview = (review, spotId) => async (dispatch) => {
+  console.log("review-------------", review)
+  console.log("spotId---------------", spotId)
   const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review)
@@ -40,6 +51,7 @@ export const createReview = (review, spotId) => async (dispatch) => {
 
   if (res.ok) {
     const newReview = await res.json();
+    console.log("newReview------------", newReview)
     dispatch(createOne(newReview));
   };
 };
@@ -50,9 +62,9 @@ export const getAllReviews = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}/reviews`);
 
   if (res.ok) {
-    const reviews = await res.json();
-    dispatch(loadAll(reviews.Reviews))
-  };
+    const reviewsData = await res.json();
+    dispatch(loadAll(reviewsData.Reviews))
+  }
 };
 
 
@@ -67,21 +79,41 @@ export const deleteReview = (reviewId) => async (dispatch) => {
   };
 };
 
+// Get all reviews from the current user
+export const getUserReviews = () => async (dispatch) => {
+  // console.log("in Thunk")
+  const res = await csrfFetch(`/api/reviews/current`)
+
+  if(res.ok) {
+    const userReviews = await res.json();
+    // console.log("userReviews THUNK---", userReviews)
+    dispatch(loadUserReviews(userReviews.Reviews))
+  }
+}
 
 // Reducer Section
-let initialState = {};
+let initialState = { userReviews: {}, spotReviews: []};
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_REVIEW: {
-      const newState = { ...state };
-      newState[action.review.id] = action.review;
+      const newState = { ...state, spotReviews: [ ...state.spotReviews] };
+      newState.spotReviews.push(action.review)
       return newState;
     }
     case LOAD_ALL_REVIEWS: {
-      const newState = { ...state };
-      action.reviews.forEach((review) => {
-        newState[review.id] = review;
-      })
+      let newState = { ...state, spotReviews: [ ...state.spotReviews] };
+      newState.spotReviews = action.reviews
+
+      // Object.values(action.reviews).forEach((review) => {
+      //   newState[review.id] = review;
+      // })
+      return newState;
+    }
+    case LOAD_USER_REVIEWS: {
+      const newState = { ...state, userReviews: { } };
+      // console.log("action.userReviews", action.userReviews)
+      action.userReviews.forEach(review => newState.userReviews[review.id] = review)
+      // console.log("newState.userReviews ______", newState.userReviews)
       return newState;
     }
     case DELETE_REVIEW: {

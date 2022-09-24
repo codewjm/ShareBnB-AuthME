@@ -50,9 +50,9 @@ function ProfileButton({ user }) {
 
           <div
           className="dropdown-reviews"
-          onClick={() => history.push("view-your-listings")}
+          onClick={() => history.push("/my-reviews")}
           >
-            {/* View Your Reviews */}
+            My Reviews
           </div>
 
           <div

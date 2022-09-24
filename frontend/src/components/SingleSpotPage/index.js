@@ -5,6 +5,7 @@ import { getSpot, deleteSpot, getAllSpots } from "../../store/spots";
 import EditSpotFormModal from "../EditSpotFormModal";
 import reviewsReducer, { getAllReviews } from "../../store/reviews";
 import ReviewCard from "../ReviewCard"
+import ReviewSpotModal from "../ReviewSpotModal";
 
 function SingleSpotPage() {
 
@@ -14,7 +15,7 @@ function SingleSpotPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const spot = useSelector((state) => (state.spots[spotId]));
   const sessionUser = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => Object.values(state.reviews));
+  const reviews = useSelector((state) => state.reviews.spotReviews);
 
   useEffect(() => {
     dispatch(getSpot(spotId))
@@ -65,7 +66,9 @@ function SingleSpotPage() {
         <div className="spot-reviews-b">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
       </div>
       <div className="all-spot-reviews">
-        {reviews && (
+        <button className="review-modal-button">
+          <ReviewSpotModal />
+          </button>{reviews && (
           reviews.map((review) => (
             <ReviewCard key={review.id} review={review} user={sessionUser}/>
           ) ))}

@@ -13,7 +13,7 @@ const filteredSpots = (spotsState) => {
   return Object.entries(spotsState).filter((entry) => {
     // filtering key-value pairs array into a new array without the userSpots entry
     return entry[0] !== "userSpots"
-    //
+
   }).map(entry => entry[1])
 }
 

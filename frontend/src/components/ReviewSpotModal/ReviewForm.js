@@ -5,7 +5,7 @@ import { createReview } from "../../store/reviews"
 
 
 // redirect is the same as history.push()
-export default function ReviewForm() {
+export default function ReviewForm({ setShowModal }) {
   // const history = useHistory()
   const params = useParams();
 
@@ -33,8 +33,10 @@ export default function ReviewForm() {
     setErrors([]);
 
 
-    await dispatch(createReview(newReviewData, spotId))
+    dispatch(createReview(newReviewData, spotId))
+    .then(() => setShowModal(false))
       .catch(async (res) => {
+        console.log("res-------", res)
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors)
         else if (data && data.message) setErrors([data.message])
@@ -69,6 +71,7 @@ export default function ReviewForm() {
           onChange={(e) => setStars(e.target.value)}
         />
       </div>
+      <button type="submit" >Post Review</button>
     </form>
   );
 }

@@ -90,7 +90,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
     dispatch(createOne(newSpot));
     return newSpot
   };
-  // return res
+  return res
 };
 
 
@@ -129,6 +129,19 @@ export const deleteSpot = (spotId) => async (dispatch) => {
     dispatch(removeOne(spotId))
   };
 };
+
+export const addSpotImage = (imageUrl, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}/images`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(imageUrl)
+  })
+  if(res.ok) {
+    dispatch(getSpot(spotId))
+  }
+  return res;
+}
+
 
 // Reducer Section
 let initialState = {userSpots: []};

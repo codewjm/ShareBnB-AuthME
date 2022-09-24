@@ -1,0 +1,32 @@
+.review-card-container {
+  border: black;
+}
+
+.review-card-container {
+  display: flex;
+  border: solid black;
+  flex-direction: column;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  height: 80px;
+  width: 500px;
+  /* border: solid black 5px; */
+}
+
+.review-card-review {
+  display: flex;
+  flex-wrap: wrap;
+  border: solid black;
+  align-items: center;
+  height: 50px;
+  width: 500px;
+}
+
+.review-card-stars {
+  display: flex;
+  border: solid black;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+}

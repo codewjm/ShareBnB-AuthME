@@ -1,6 +1,7 @@
 
 import { useDispatch } from 'react-redux';
 import { deleteReview } from '../../store/reviews';
+import "./ReviewCard.css";
 
 const ReviewCard = ({ review, sessionUser }) => {
 
@@ -19,16 +20,15 @@ const ReviewCard = ({ review, sessionUser }) => {
 
   return (
     <div className="review-card-container">
-      <div>
-        {review.stars}, {review.review}
+      <div className="fa fa-star fa-xs review-card-stars">
+        {review.stars}
       </div>
+      <div className="review-card-review">{review.review}</div>
 
       <div>
-        {/* {
-        review.userId === sessionUser.id && (
+        {
           <button className="delete-review" onClick={handleDelete}>Delete Review</button>
-        )
-      } */}
+      }
       </div>
 
     </div>

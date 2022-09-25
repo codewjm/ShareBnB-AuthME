@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getUserReviews } from "../../store/reviews"
 import { Redirect } from "react-router-dom";
 import ReviewCard from "../ReviewCard";
-
+import { getAllReviews } from "../../store/reviews";
 
 export default function UserReviewsPage() {
 
@@ -12,6 +12,7 @@ export default function UserReviewsPage() {
   const userReviewsObj = useSelector((state) => state.reviews?.userReviews);
   const userReviews = Object.values(userReviewsObj);
   // console.log("UserReviewPage-------", userReviews)
+
 
   useEffect(() => {
     dispatch(getUserReviews())
@@ -29,7 +30,7 @@ export default function UserReviewsPage() {
         <div className="review-page-card-container">
 
           {userReviews?.map((review) => (
-            <ReviewCard review={review} sessionUser={sessionUser}/>
+            <ReviewCard review={review} sessionUser={sessionUser}  />
           ))}
 
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
+import { getSpot } from "../../store/spots";
 import { createReview } from "../../store/reviews"
 
 
@@ -11,6 +12,7 @@ export default function ReviewForm({ setShowModal }) {
 
   const { spotId } = params;
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [review, setReview] = useState("");
   const [stars, setStars] = useState("");
@@ -34,7 +36,10 @@ export default function ReviewForm({ setShowModal }) {
 
 
     dispatch(createReview(newReviewData, spotId))
-    .then(() => setShowModal(false))
+    .then(() => {
+      setShowModal(false)
+      dispatch(getSpot(spotId))
+    })
       .catch(async (res) => {
         console.log("res-------", res)
         const data = await res.json();
@@ -71,7 +76,7 @@ export default function ReviewForm({ setShowModal }) {
           onChange={(e) => setStars(e.target.value)}
         />
       </div>
-      <button type="submit" >Post Review</button>
+      <button type="submit">Post Review</button>
     </form>
   );
 }

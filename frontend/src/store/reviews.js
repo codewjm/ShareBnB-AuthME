@@ -118,7 +118,8 @@ const reviewsReducer = (state = initialState, action) => {
       newState.spotReviews = newState.spotReviews.filter(
         el => el.id !== action.reviewId
       );
-      delete newState.userReviews[action.reviewId]
+      // delete newState.userReviews[action.reviewId]
+      newState.userReviews = {}
       return newState;
     }
     default:

@@ -45,7 +45,7 @@ function CreateSpotForm() {
     setErrors(errors);
   }, [name, address, city, state, country, lat, lng, description, image, price]) ;
 
-  
+
   if (!sessionUser) return <Redirect to="/signup" />;
 
 

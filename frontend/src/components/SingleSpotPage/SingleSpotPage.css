@@ -1,0 +1,176 @@
+.master-spot-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 65%;
+  padding-top: 1%;
+}
+
+.spot-name-header {
+  font-size: 26pt;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.spot-details-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.spot-header-container {
+  margin-bottom: 3px;
+  font-size: 14pt;
+}
+
+.image-container {
+  vertical-align: bottom;
+  height: 30vw;
+  /* height: 600px; */
+}
+
+.spot-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  /* vertical-align: bottom; */
+  border-radius: 18px;
+}
+
+.spot-description {
+  /* margin-top: 15px; */
+  font-size: 14pt;
+  font-weight: 400;
+}
+
+.spot-footer-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.spot-price-rating-reviews{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: solid 1px grey; */
+  border-radius: 15px;
+  height: 60px;
+  width: 330px;
+  padding: 15px;
+  box-shadow: 0px 0px 8px grey;
+}
+
+.spot-review-rating {
+  display: flex;
+  align-items: center;
+  width: 130px;
+  justify-content: space-between;
+
+}
+
+.jank {
+  display: flex;
+  /* align-items: center; */
+  top: 3px;
+}
+
+.inside-jank {
+  display: flex;
+  align-items: center;
+}
+
+.spot-price {
+  display: flex;
+  align-items: center;
+  font-size: 18pt;
+  font-weight: 700;
+  width: 150px;
+}
+
+.night-price {
+  font-size: 12pt;
+  font-weight: 400;
+  margin-left: 5px;
+  bottom: 10px;
+}
+
+.spot-reviews-header {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid grey;
+  padding-top: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  /* box-shadow: 0px 0px 1px grey; */
+
+}
+
+.spot-reviews-b {
+  margin-left: 10px;
+}
+
+.review-modal-button {
+  border: none;
+  border-radius: 8px;
+  background-color: red;
+  height: 25px;
+  width: 120px;
+  font-size: 10pt;
+  font-weight: 600;
+  color: white;
+
+}
+
+/* Review Card */
+.review-card-container {
+  display: flex;
+
+  /* border: solid black; */
+  flex-direction: column;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  height: 110px;
+  width: 50%;
+  /* border: solid black 5px; */
+}
+
+.review-card-review {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: solid black; */
+  /* align-items: center; */
+  height: 50px;
+  /* width: 50; */
+}
+
+.review-card-stars {
+margin-bottom: 10px;
+}
+
+.all-spot-reviews {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.spot-rating-reviews-container {
+  display: flex;
+  align-items: center;
+  font-size: 16pt;
+  font-weight: 400;
+}
+
+.delete-button {
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+}

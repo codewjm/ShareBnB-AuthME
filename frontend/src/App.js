@@ -35,12 +35,12 @@ function App() {
           <Route exact path="/spots/:spotId">
             <SingleSpotPage />
           </Route>
-          <Route path="/my-listings">
+          {/* <Route path="/my-listings">
             <OwnerSpotsPage />
-          </Route>
-          <Route path="/my-reviews">
+          </Route> */}
+          {/* <Route path="/my-reviews">
             <UserReviewsPage />
-          </Route>
+          </Route> */}
           <Route path="/testing">
             <ReviewForm />
           </Route>

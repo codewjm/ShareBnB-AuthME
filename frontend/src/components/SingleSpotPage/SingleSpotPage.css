@@ -74,16 +74,6 @@
 
 }
 
-.jank {
-  display: flex;
-  /* align-items: center; */
-  top: 3px;
-}
-
-.inside-jank {
-  display: flex;
-  align-items: center;
-}
 
 .spot-price {
   display: flex;
@@ -114,6 +104,10 @@
 
 .spot-reviews-b {
   margin-left: 10px;
+}
+
+.spot-rating-b {
+  margin-left: 1px;
 }
 
 .review-modal-button {

@@ -14,7 +14,7 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div className="nav_bar_right">
+      <div className="nav-bar-right">
         <CreateSpotFormModal />
         <ProfileButton user={sessionUser} />
       </div>
@@ -35,13 +35,15 @@ function Navigation({ isLoaded }) {
   };
 
   return (
-    <div className="nav-container">
-      <div className="navBar">
+    <div className="master-nav-container">
+      <div className="nav-container">
+        <div className="navBar">
           <NavLink exact to="/">
             <img src={siteLogo} className="site-logo" />
           </NavLink>
+        </div>
+        {isLoaded && sessionLinks}
       </div>
-      {isLoaded && sessionLinks}
     </div>
   );
 };

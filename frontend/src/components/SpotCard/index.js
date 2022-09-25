@@ -4,7 +4,7 @@ import './SpotCard.css';
 const SpotCard = ({ spot }) => {
 
   // added to stop that empty spot from showing
-  if(!spot) return null
+  if (!spot) return null
 
   return (
     <div className="card-container">
@@ -14,7 +14,9 @@ const SpotCard = ({ spot }) => {
         </div>
         <div className="spot-card-details">
           <div>{spot?.city}, {spot?.state}</div>
-          <div className="fa fa-star fa-xs">{spot?.avgRating}</div>
+          <div>
+            <i className="fa fa-star fa-xs"></i><span>{spot?.avgRating}</span>
+          </div>
           <div>${spot?.price} night</div>
         </div>
       </Link>

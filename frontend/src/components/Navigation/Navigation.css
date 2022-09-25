@@ -6,17 +6,77 @@
   display: flex;
   position: sticky;
   justify-content: space-between;
-  border-bottom: 1px solid lightgrey;
-}
-
-.navBar {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 15px;
   margin-bottom: 15px;
   margin-left: 135px;
   margin-right: 135px;
+}
+
+.master-nav-container {
+  border-bottom: 1px solid lightgrey;
+}
+
+.dropdown-logout {
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.dropdown-email {
+  padding: 10px 20px;
+  text-align: left;
+  border-bottom: 1px solid lightgrey;
+}
+
+.dropdown-email:hover {
+  background-color: #eee;
+}
+
+.dropdown-logout:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+hr {
+  margin: 2px;
+}
+
+.dropdown-menu {
+  position: relative;
+}
+
+.dropdown-button:hover {
+  box-shadow: 0px 4px 8px -3px rgba(0,0,0,0.57);
+  transition-duration: 300ms;
+}
+
+.nav-bar-right {
+  display: flex;
+  align-items: center;
+  /* margin-left: 40px; */
+}
+
+.dropdown-menu i.fa-user-circle {
+  font-size: 26px;
+  color: rgb(126, 126, 126);
+  vertical-align: middle;
+}
+
+.dropdown-menu i.fa-bars {
+  font-size: 16px;
+  margin-right: 18px;
+  margin-left: 5px;
+  color: rgb(126, 126, 126);
+  vertical-align: middle;
+
+}
+
+.dropdown-button {
+  /* display: flex; */
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 300px;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .login-signup-container {
@@ -33,17 +93,41 @@
 }
 
 .signup-button {
-  display:flex;
+  display: flex;
   margin: 20px;
 }
 
 #root {
   text-decoration: none;
   font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-  sans-serif;
+    sans-serif;
+}
+
+body {
+  margin: 0;
 }
 
 a {
   text-decoration: none;
   color: black;
 }
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  font-size: 14px;
+  right: 0;
+  top: calc(100% + 10px);
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.57)
+  /* border: solid black 1px; */
+}
+
+/* .dropdown-email {
+  border-bottom: 1px solid lightgrey;
+} */

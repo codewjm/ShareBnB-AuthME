@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import * as sessionActions from '../../store/session';
 // import CreateSpotFormModal from "../CreateSpotFormModal";
-import './ProfileButton.css';
+import "./Navigation.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector((state) => state?.session?.user)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -34,11 +35,12 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
-      <div className="menu" onClick={openMenu}>
-        <i className="fas fa-bars" />
-        <i className="fas fa-user-circle" />
+    <div className="dropdown-menu" >
+      <div className="dropdown-button" onClick={openMenu}>
+      <i className="fas fa-bars" />
+      <i className="fas fa-user-circle" />
       </div>
+
       {showMenu && (
         <div className="profile-dropdown">
           {/* <div
@@ -54,15 +56,17 @@ function ProfileButton({ user }) {
           >
             My Reviews
           </div> */}
-
+          <div className="dropdown-email">
+            Profile: {sessionUser.email}
+          </div>
           <div
-          className="dropdown-logout"
-          onClick={logout}>
-          Log Out
+            className="dropdown-logout"
+            onClick={logout}>
+            Log Out
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

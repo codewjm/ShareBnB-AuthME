@@ -21,7 +21,7 @@ function SingleSpotPage() {
   const onReviewDelete = () => {
     dispatch(getAllReviews(spotId))
   }
-// console.log("sessionUder/ownerId-----", sessionUser.id , spot.Owner.id)
+  // console.log("sessionUder/ownerId-----", sessionUser.id , spot.Owner.id)
 
   useEffect(() => {
     dispatch(getSpot(spotId))
@@ -50,12 +50,8 @@ function SingleSpotPage() {
         <div className="spot-name-header">{spot?.name}</div>
         <div className="spot-details-header">
           <div className="spot-rating-header">
-            <div className="fa fa-star fa-xs jank">
-              <div className="inside-jank">
-              {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
-              </div>
-
-            </div>
+            <i className="fa fa-star fa-xs"></i>
+            <span>{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</span>
           </div>
           <div className="spot-num-reviews-header">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
           <div className="spot-location">{spot?.city}, {spot?.state}, {spot?.country}</div>
@@ -74,7 +70,10 @@ function SingleSpotPage() {
           </div>
 
           <div className="spot-review-rating">
-            <div className="spot-rating-a fa fa-star fa-xs">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
+            <div className="spot-rating-a fa fa-star fa-xs"></div>
+            <span>
+              {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
+            </span>
             <div className="spot-reviews-a">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
           </div>
 
@@ -83,8 +82,11 @@ function SingleSpotPage() {
       <div className="spot-reviews-header">
         <div className="spot-rating-reviews-container">
 
-        <div className="spot-rating-b fa fa-star fa-xs">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</div>
-        <div className="spot-reviews-b">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
+          <div className="fa fa-star fa-xs"></div>
+          <span class-name="spot-rating-b">
+            {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
+          </span>
+          <div className="spot-reviews-b">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
         </div>
         {sessionUser && sessionUser?.id !== spot.Owner.id && (
           <button className="review-modal-button">

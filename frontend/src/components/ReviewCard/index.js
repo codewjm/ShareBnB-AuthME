@@ -1,7 +1,8 @@
 
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import reviewsReducer, { deleteReview, getAllReviews } from '../../store/reviews';
+import reviewsReducer, { deleteReview, getAllReviews, getUserReviews } from '../../store/reviews';
 import spotsReducer, { getSpot } from '../../store/spots';
 import "./ReviewCard.css";
 
@@ -9,32 +10,28 @@ const ReviewCard = ({ review, onDelete }) => {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user)
-  const history = useHistory();
+  // const history = useHistory();
   const { spotId } = useParams();
 
+  const reviewedBy = review?.User?.firstName
 
-  let owner;
-  if ( sessionUser && review) {
-    owner = sessionUser.id === review;
-  }
-  // console.log("user---", sessionUser)
-  // console.log("review---", review)
+  useEffect(()=> {
+    dispatch(getAllReviews(spotId))
+  }, [spotId])
 
 
-
-  if(!review) return null;
-
+  if (!review) return null;
 
 
   const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(deleteReview(review.id)).then(() => {
-    dispatch(getSpot(spotId)).then(() => {
-      dispatch(getAllReviews(spotId))
-    })
+      dispatch(getSpot(spotId)).then(() => {
+        dispatch(getAllReviews(spotId))
+      })
       // history.push(`/spots/${spotId}`)
     })
-    if(onDelete) {
+    if (onDelete) {
       onDelete();
     }
   }
@@ -46,12 +43,21 @@ const ReviewCard = ({ review, onDelete }) => {
       <div className="fa fa-star fa-xs review-card-stars">
         {review.stars}
       </div>
-      <div className="review-card-review">{review.review}</div>
-    { sessionUser?.id === review.userId &&
       <div>
-          <button className="delete-button" onClick={handleDelete}>Delete Review</button>
+        {reviewedBy}
       </div>
-    }
+      <div>
+        {new Date(review?.createdAt).toLocaleDateString(undefined, {
+        month: "long",
+        year: "numeric"
+      })}
+      </div>
+      <div className="review-card-review">{review.review}</div>
+      {sessionUser?.id === review.userId &&
+        <div>
+          <button className="delete-button" onClick={handleDelete}>Delete Review</button>
+        </div>
+      }
 
     </div>
   )

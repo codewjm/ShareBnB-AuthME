@@ -16,12 +16,15 @@ function SingleSpotPage() {
   const spot = useSelector((state) => (state.spots[spotId]));
   const sessionUser = useSelector((state) => state.session.user);
   const reviews = useSelector((state) => state.reviews.spotReviews);
+  const onReviewDelete = () => {
+    dispatch(getAllReviews(spotId))
+  }
 
   useEffect(() => {
     dispatch(getSpot(spotId))
     .then(() => setIsLoaded(true))
     dispatch(getAllReviews(spotId))
-  }, [dispatch, spotId]);
+  }, [dispatch, spotId ]);
 
   const removeSpot = async (e) => {
     e.preventDefault();
@@ -70,7 +73,7 @@ function SingleSpotPage() {
           <ReviewSpotModal />
           </button>{reviews && (
           reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} user={sessionUser}/>
+            <ReviewCard key={review.id} review={review} user={sessionUser} onDelete={()=> onReviewDelete()}/>
           ) ))}
       </div>
       <div>

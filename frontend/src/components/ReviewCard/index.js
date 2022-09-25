@@ -1,19 +1,35 @@
 
-import { useDispatch } from 'react-redux';
-import { deleteReview } from '../../store/reviews';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import reviewsReducer, { deleteReview, getAllReviews } from '../../store/reviews';
+import spotsReducer, { getSpot } from '../../store/spots';
 import "./ReviewCard.css";
 
-const ReviewCard = ({ review, sessionUser }) => {
+const ReviewCard = ({ review, onDelete }) => {
 
   const dispatch = useDispatch();
-  console.log("user---", sessionUser)
-  console.log("review---", review)
+  const sessionUser = useSelector((state) => state.session.user)
+  const { spotId } = useParams();
+
+
+  let owner;
+  if ( sessionUser && review) {
+    owner = sessionUser.id === review;
+  }
+  // console.log("user---", sessionUser)
+  // console.log("review---", review)
+
 
   if(!review) return null;
 
-  const handleDelete = (e) => {
+
+
+  const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(deleteReview(review.id))
+    if(onDelete) {
+      onDelete();
+    }
   }
 
   // if(!sessionUser || !review) return null;
@@ -24,12 +40,11 @@ const ReviewCard = ({ review, sessionUser }) => {
         {review.stars}
       </div>
       <div className="review-card-review">{review.review}</div>
-
+    { sessionUser.id === review.userId &&
       <div>
-        {
           <button className="delete-review" onClick={handleDelete}>Delete Review</button>
-      }
       </div>
+    }
 
     </div>
   )

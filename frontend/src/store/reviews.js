@@ -24,7 +24,7 @@ const loadAll = (reviews) => {
 const deleteOne = (reviewId) => {
   return {
     type: DELETE_REVIEW,
-    // reviewId
+    reviewId
   }
 }
 
@@ -97,16 +97,13 @@ const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_REVIEW: {
       const newState = { ...state, spotReviews: [ ...state.spotReviews] };
-      newState.spotReviews.push(action.review)
+      newState.spotReviews.push(action.review);
+      newState.userReviews[action.review.id] = action.review;
       return newState;
     }
     case LOAD_ALL_REVIEWS: {
       let newState = { ...state, spotReviews: [ ...state.spotReviews] };
       newState.spotReviews = action.reviews
-
-      // Object.values(action.reviews).forEach((review) => {
-      //   newState[review.id] = review;
-      // })
       return newState;
     }
     case LOAD_USER_REVIEWS: {
@@ -118,7 +115,10 @@ const reviewsReducer = (state = initialState, action) => {
     }
     case DELETE_REVIEW: {
       const newState = { ...state };
-      delete newState[action.reviewId];
+      newState.spotReviews = newState.spotReviews.filter(
+        el => el.id !== action.reviewId
+      );
+      delete newState.userReviews[action.reviewId]
       return newState;
     }
     default:

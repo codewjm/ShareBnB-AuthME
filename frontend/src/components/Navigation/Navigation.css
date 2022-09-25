@@ -83,18 +83,21 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: 400px; */
-  margin-right: 115px;
 }
+
+/* .create-spot-link {
+  display: flex;
+  margin: 20px;
+} */
 
 .login-button {
   display: flex;
-  margin: 20px;
+  margin-right: 25px;
 }
 
 .signup-button {
   display: flex;
-  margin: 20px;
+  /* margin: 20px; */
 }
 
 #root {

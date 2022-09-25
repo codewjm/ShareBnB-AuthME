@@ -15,7 +15,9 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <div className="nav-bar-right">
-        <CreateSpotFormModal />
+        <div class-name="create-spot-link">
+          <CreateSpotFormModal />
+        </div>
         <ProfileButton user={sessionUser} />
       </div>
     );

@@ -113,13 +113,13 @@
 .review-modal-button {
   border: none;
   border-radius: 8px;
-  background-color: red;
+  background-color: #EC5C74;
   height: 25px;
   width: 120px;
   font-size: 10pt;
   font-weight: 600;
   color: white;
-
+  cursor: pointer;
 }
 
 /* Review Card */
@@ -163,8 +163,9 @@ margin-bottom: 10px;
 
 .delete-button {
   border: none;
-  background-color: red;
+  background-color: #EC5C74;
   color: white;
   border-radius: 8px;
   font-weight: 600;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import CreateSpotForm from './CreateSpotForm';
+import './CreateSpotForm.css'
 
 function CreateSpotFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,7 @@ function CreateSpotFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Create A Spot</button>
+      <div onClick={() => setShowModal(true)} className="create">Create A Spot</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateSpotForm />

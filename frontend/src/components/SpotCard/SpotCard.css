@@ -1,10 +1,10 @@
-
 .card-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  height: 385.75px;
+  margin-top: 20px;
+  height: 350.75px;
   width: 300.8px;
   /* border: solid black 5px; */
 }
@@ -23,4 +23,16 @@
 .spot-card-details {
   height: 50px;
   width: 300.8px;
+}
+
+.spot-card-rating {
+  margin-left: 4px;
+}
+
+.top-details-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px
 }

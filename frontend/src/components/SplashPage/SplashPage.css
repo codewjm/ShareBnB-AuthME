@@ -4,6 +4,5 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 5%;
-  gap: 1%;
+  gap: 25px;
 }

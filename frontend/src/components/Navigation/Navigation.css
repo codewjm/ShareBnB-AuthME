@@ -4,17 +4,22 @@
 
 .nav-container {
   display: flex;
-  position: sticky;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  padding-top: 15px;
   margin-bottom: 15px;
   margin-left: 135px;
   margin-right: 135px;
+  position: sticky;
+  top: 0px;
 }
 
 .master-nav-container {
+  width: 100%;
   border-bottom: 1px solid lightgrey;
+  position: sticky;
+  top: 0px;
+  background-color: white;
 }
 
 .dropdown-logout {

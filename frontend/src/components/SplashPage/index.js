@@ -25,22 +25,20 @@ const SplashPage = () => {
   const allSpots = filteredSpots(allSpotsObj);
   // const allSpots = Object.values(allSpotsObj);
 
-console.log("allSpots------", allSpots)
+  console.log("allSpots------", allSpots)
 
   useEffect(() => {
     dispatch(getAllSpots())
   }, [dispatch])
   // console.log("allSpotsObj", allSpotsObj)
-  if(!allSpots.length) return null;
+  if (!allSpots.length) return null;
 
   return (
-
-        <div className="card-positions">
-          {allSpots.map((spot) => (
-            <SpotCard key={spot?.id} spot={spot}/>
-          ))}
-        </div>
-
+    <div className="card-positions">
+      {allSpots.map((spot) => (
+        <SpotCard key={spot?.id} spot={spot} />
+      ))}
+    </div>
   )
 }
 

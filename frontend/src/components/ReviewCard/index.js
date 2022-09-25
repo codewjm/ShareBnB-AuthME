@@ -29,7 +29,9 @@ const ReviewCard = ({ review, onDelete }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     dispatch(deleteReview(review.id)).then(() => {
-    dispatch(getSpot(spotId))
+    dispatch(getSpot(spotId)).then(() => {
+      dispatch(getAllReviews(spotId))
+    })
       // history.push(`/spots/${spotId}`)
     })
     if(onDelete) {

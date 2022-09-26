@@ -69,3 +69,12 @@ JWT_EXPIRES_IN=604800
 ## Selected Spot Detail Page
 
 ![SharesBnB-spotpage](https://user-images.githubusercontent.com/95896008/192286432-1bb1403f-c4e8-403c-a0ed-fee2b4c7af21.png)
+
+## Road Map: Future Features
+
+Future Features Include:
+* A profile page for the user to view their account information. 
+* A page for the current user to view all of their current hosted spot listings.
+* A page for the current user to view all of their exisitng reviews for spots they previouly visited.
+* Functionality for a user to book a spot from a selected spot's detail page.
+* A page for the current user to view their spot bookings.

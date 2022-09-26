@@ -5,7 +5,6 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 65%;
-  padding-top: 1%;
 }
 
 .spot-name-header {
@@ -62,7 +61,8 @@
   border-radius: 15px;
   height: 60px;
   width: 330px;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   box-shadow: 0px 0px 8px grey;
 }
 
@@ -77,8 +77,8 @@
 
 .spot-price {
   display: flex;
-  align-items: center;
-  font-size: 18pt;
+  align-items: baseline;
+  font-size: 15pt;
   font-weight: 700;
   width: 150px;
 }
@@ -95,7 +95,7 @@
   align-items: center;
   border-top: 1px solid grey;
   padding-top: 25px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 20px;
   justify-content: space-between;
   /* box-shadow: 0px 0px 1px grey; */

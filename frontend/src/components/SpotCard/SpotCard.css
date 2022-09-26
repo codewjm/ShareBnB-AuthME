@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 20px;
   height: 350.75px;
   width: 300.8px;
+  margin-bottom: 5px;
   /* border: solid black 5px; */
 }
 
@@ -18,6 +18,7 @@
   width: 300.8px;
   height: 285.75px;
   border-radius: 5%;
+  object-fit: cover;
 }
 
 .spot-card-details {
@@ -34,5 +35,22 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.spot-cty-st {
+  font-weight: 600;
+}
+
+
+.spot-night-price {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
   margin-bottom: 5px
+}
+
+.spt-price {
+  font-weight: 600;
+  margin-right: 4px;
 }

@@ -14,12 +14,15 @@ const SpotCard = ({ spot }) => {
         </div>
         <div className="spot-card-details">
           <div className="top-details-bar">
-            <div>{spot?.city}, {spot?.state}</div>
+            <div className="spot-cty-st">{spot?.city}, {spot?.state}</div>
             <div>
               <i className="fa fa-star fa-xs"></i><span className="spot-card-rating">{spot?.avgRating}</span>
             </div>
           </div>
-          <div>${spot?.price} night</div>
+          <div className="spot-night-price">
+            <div className="spt-price">${spot?.price}</div>
+            <div>night</div>
+            </div>
         </div>
       </Link>
     </div>

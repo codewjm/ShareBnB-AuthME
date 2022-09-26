@@ -2,7 +2,8 @@
 
 SharesBnB is a reduced clone of the AirBnB web application. This clone allows users to browse and create hosted listings, as well as broswe and create reviews for listings.
 
-## Tech Stack Utilized:
+## Tech Stack: 
+## Frameworks, Platforms, and Libraries:
 
 Frontend:
 
@@ -18,8 +19,12 @@ Backend:
 ![image](https://user-images.githubusercontent.com/20654267/192156854-da992c42-d7fc-468a-ad02-65316be0d9c2.png)
 ![image](https://user-images.githubusercontent.com/20654267/192156896-44718733-3b28-4f64-934a-78522df3a444.png)
 
-Database: Postgress
+Database: 
 
-Hosted On: Heroku 
+![image](https://user-images.githubusercontent.com/20654267/192156956-e6ef56f2-5645-406a-8778-83baf75489a1.png)
+
+Hosted On:
+
+![image](https://user-images.githubusercontent.com/20654267/192156972-28d4bd6a-7012-4d73-8bbd-105cfba12108.png)
 
 

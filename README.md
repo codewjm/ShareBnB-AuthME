@@ -4,6 +4,13 @@ SharesBnB is a reduced clone of the [AirBnB](https://www.airbnb.com/) web applic
 
 SharesBnB Live Link: [SharesBnB](https://sharesbnb.herokuapp.com/)
 
+## Site Resources: 
+
+* [API Documentation](https://github.com/codewjm/SharesBnB/wiki/API-Documentation)
+* [Database Schema](https://github.com/codewjm/SharesBnB/wiki/Database-Schema)
+* [Feature List](https://github.com/codewjm/SharesBnB/wiki/Feature-List)
+* [Redux State Shape](https://github.com/codewjm/SharesBnB/wiki/Redux-State-Shape)
+
 ## Tech Stack: Frameworks, Platforms, and Libraries
 
 Frontend:

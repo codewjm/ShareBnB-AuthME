@@ -55,7 +55,7 @@ module.exports = {
       {
         userId: 4,
         spotId: 1,
-        review: 'The place was an absolute mess and the hot water did not work - avoid at all costs.',
+        review: 'The water did not work - avoid at all costs.',
         stars: 1
       },
     ]

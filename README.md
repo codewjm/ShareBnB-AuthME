@@ -57,3 +57,6 @@ JWT_EXPIRES_IN=604800
 
 ![SharesBnB-homepage](https://user-images.githubusercontent.com/95896008/192286349-bf6f9a7c-1d89-430f-b16a-1f22c865024b.png)
 
+## Selected Spot Detail Page
+
+![SharesBnB-spotpage](https://user-images.githubusercontent.com/95896008/192286432-1bb1403f-c4e8-403c-a0ed-fee2b4c7af21.png)

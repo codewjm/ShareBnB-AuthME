@@ -19,7 +19,7 @@ module.exports = {
       {
         userId: 3,
         spotId: 4,
-        review: 'The flying saucer did not disappoint and it must have been fun because I cannot remember a thing about our time there...',
+        review: 'The flying saucer did not disappoint.',
         stars: 4
       },
       {
@@ -31,31 +31,31 @@ module.exports = {
       {
         userId: 5,
         spotId: 6,
-        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        review: 'We will be back!',
         stars: 5
       },
       {
         userId: 4,
         spotId: 5,
-        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        review: 'We had a pretty good time and will be back.',
         stars: 4
       },
       {
         userId: 4,
         spotId: 3,
-        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        review: 'I was average - nothing special.',
         stars: 3
       },
       {
         userId: 4,
         spotId: 2,
-        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        review: 'This is a pretty good spot. It was clean on arrival.',
         stars: 3
       },
       {
         userId: 4,
         spotId: 1,
-        review: 'This loft overlooked the skyline of Chicago and was beautiful at night.',
+        review: 'The place was an absolute mess and the hot water did not work - avoid at all costs.',
         stars: 1
       },
     ]

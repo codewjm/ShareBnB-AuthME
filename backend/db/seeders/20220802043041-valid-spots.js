@@ -15,7 +15,7 @@ module.exports = {
         lat: 30.12345,
         lng: -31.12345,
         name: 'Space Place',
-        description: 'We have shiny things and a pool of mercury',
+        description: 'You cannot go wrong wit this spot. I assure you and your friends will love it.',
         price: 255
       },
       {
@@ -27,7 +27,7 @@ module.exports = {
         lat: 40.123456,
         lng: -41.654321,
         name: 'Alien Abode',
-        description: 'Charming alien hangout',
+        description: 'A very charming location.',
         price: 155
       },
       {
@@ -39,7 +39,7 @@ module.exports = {
         lat: 50.123456,
         lng: -51.654321,
         name: 'Saucer Joy Ride',
-        description: 'A secluded dwelling shaped like a flying saucer',
+        description: 'A very nice dwelling. You will want to come back.',
         price: 145
       },
       {
@@ -51,7 +51,7 @@ module.exports = {
         lat: 60.123456,
         lng: -61.654321,
         name: 'Supernova Pad',
-        description: 'A bright orange mansion near Manhattan',
+        description: 'You will not regret booking this spot.',
         price: 140
       },
       {
@@ -63,7 +63,7 @@ module.exports = {
         lat: 70.123456,
         lng: -72.654321,
         name: 'Come Find Us',
-        description: 'Located on the 5th floor',
+        description: 'Book us in the next week and we will give you access to our wine cellar.',
         price: 525
       },
       {
@@ -75,7 +75,7 @@ module.exports = {
         lat: 71.123456,
         lng: -73.654321,
         name: 'House Amongst Trees',
-        description: 'Located within a forest',
+        description: 'This is a very nice place, kept clean, and with friendly neighbors.',
         price: 550
       },
       {
@@ -87,7 +87,7 @@ module.exports = {
         lat: 73.123456,
         lng: -74.654321,
         name: 'Hot Spot Phoenix',
-        description: 'Located on 5 acres of private land',
+        description: 'You cannot get enough of this spot; I promise.',
         price: 177
       },
       {
@@ -111,7 +111,7 @@ module.exports = {
         lat: 75.123456,
         lng: -76.654321,
         name: 'Auburn Spot',
-        description: 'The place is great with a pool',
+        description: 'The place is great with a secret pool.',
         price: 330
       },
       {
@@ -123,7 +123,7 @@ module.exports = {
         lat: 76.123456,
         lng: -77.654321,
         name: 'Cool Spot Atlanta',
-        description: 'A great spot in Atlanta',
+        description: 'A great spot in Atlanta.',
         price: 120
       },
       {
@@ -135,7 +135,7 @@ module.exports = {
         lat: 77.123456,
         lng: -78.654321,
         name: 'Savannah House',
-        description: 'A nice breezy spot',
+        description: 'A nice breezy spot.',
         price: 420
       },
       {
@@ -146,8 +146,8 @@ module.exports = {
         country: 'USA',
         lat: 78.123456,
         lng: -79.654321,
-        name: 'Beach House Miami',
-        description: 'Located right on the beach',
+        name: 'Jungle House Spot',
+        description: 'Oddly enough, a jungle in Florida',
         price: 350
       },
     ];

@@ -30,7 +30,7 @@ Hosted On:
 
 ### Installing Locally: 
 1. Clone the SharesBnB repository from GitHub into a file via your terminal: https://github.com/codewjm/SharesBnB.git
-2. Run npm install and npm -D in both your backend and frontend folders individually
+2. Run `npm install` and `npm -D` in both your backend and frontend folders individually
 
 ### Database Setup:
 1. Create a new .env file in the backend folder. 

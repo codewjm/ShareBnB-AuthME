@@ -149,6 +149,7 @@ return (
         type="number"
         value={price}
         placeholder="$0.00"
+        min = {1}
         onChange={(e) => setPrice(e.target.value)}
       />
     </label>

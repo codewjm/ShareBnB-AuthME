@@ -50,10 +50,10 @@ function SingleSpotPage() {
         <div className="spot-name-header">{spot?.name}</div>
         <div className="spot-details-header">
           <div className="spot-rating-header">
-            <i className="fa fa-star fa-xs"></i>
-            <span>{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</span>
-          </div>
-          <div className="spot-num-reviews-header">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
+            <i className="fa fa-star fa-xs this-star-align"></i> ·
+            <span className="rating-align">{!spot.avgStarRating ? "0.00" : spot.avgStarRating}</span>
+          </div> ·
+          <div className="spot-num-reviews-header">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div> ·
           <div className="spot-location">{spot?.city}, {spot?.state}, {spot?.country}</div>
         </div>
       </div>
@@ -70,10 +70,10 @@ function SingleSpotPage() {
           </div>
 
           <div className="spot-review-rating">
-            <div className="spot-rating-a fa fa-star fa-xs"></div>
+            <div className="spot-rating-a fa fa-star fa-xs"></div> ·
             <span>
               {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
-            </span>
+            </span> ·
             <div className="spot-reviews-a">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
           </div>
 
@@ -90,10 +90,10 @@ function SingleSpotPage() {
       </div>
       <div className="spot-reviews-header">
         <div className="spot-rating-reviews-container">
-          <div className="fa fa-star fa-xs"></div>
-          <span class-name="spot-rating-b">
+          <div className="fa fa-star fa-xs icon-align"></div> ·
+          <div class-name="spot-rating-b">
             {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
-          </span>
+          </div>  ·
           <div className="spot-reviews-b">{!spot.numReviews ? 0 : spot.numReviews} review(s)</div>
         </div>
         {sessionUser && sessionUser?.id !== spot.Owner.id && (

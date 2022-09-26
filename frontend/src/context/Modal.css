@@ -84,3 +84,7 @@ input {
   margin-bottom: 12px;
   margin-left: 19px;
 }
+
+body {
+  padding-bottom: 50px;
+}

@@ -14,7 +14,7 @@ function CreateSpotFormModal() {
 
   return (
     <>
-      <div onClick={() => setShowModal(true)} className="create">Create A Spot</div>
+      <div onClick={() => setShowModal(true)} className="create">Create a Spot</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateSpotForm />

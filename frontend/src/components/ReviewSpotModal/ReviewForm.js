@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getSpot } from "../../store/spots";
 import { createReview } from "../../store/reviews"
-
+import "./ReviewForm.css"
 
 // redirect is the same as history.push()
 export default function ReviewForm({ setShowModal }) {
@@ -52,9 +52,10 @@ export default function ReviewForm({ setShowModal }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Rate This Spot</h2>
       <ul className="newReview_error">
         {Object.values(errors).map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <div key={idx}>{error}</div>
         ))}
       </ul>
       <div>
@@ -76,7 +77,7 @@ export default function ReviewForm({ setShowModal }) {
           onChange={(e) => setStars(e.target.value)}
         />
       </div>
-      <button type="submit">Post Review</button>
+      <button className="post-review-btn" type="submit">Post Review</button>
     </form>
   );
 }

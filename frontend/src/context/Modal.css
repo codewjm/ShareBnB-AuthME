@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border-radius: 30px; */
 }
 
 #modal-background {
@@ -16,9 +17,44 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 #modal-content {
   position: absolute;
   background-color: white;
+  border-radius: 20px;
+  width: 600px;
+}
+
+form {
+  border-radius: 20px;
+  width: 600px;
+  margin-bottom: 5px;
+
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  width: 100%;
+}
+
+input {
+  /* background-color: initial!important; */
+  border: rgb(19, 17, 17);
+  width: 500px;
+  height: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.newReview_error{
+  color: red;
+}
+
+.newSpot_error {
+  margin-top: 0px;
 }

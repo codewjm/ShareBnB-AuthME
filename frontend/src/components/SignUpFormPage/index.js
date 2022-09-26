@@ -43,59 +43,60 @@ function SignupFormPage() {
     <form onSubmit={handleSubmit}>
       <ul className="signup_error">
         {Object.values(errors).map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <div key={idx}>{error}</div>
         ))}
       </ul>
       <label>
-        First Name
         <input
           type="text"
           value={firstName}
+          placeholder="First Name"
           onChange={(e) => setFirstname(e.target.value)}
           required
         />
       </label>
       <label>
-        Last Name
         <input
           type="text"
           value={lastName}
+          placeholder="Last Name"
           onChange={(e) => setLastname(e.target.value)}
           required
         />
       </label>
       <label>
-        Email
         <input
           type="text"
           value={email}
+          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
       <label>
-        Username
         <input
           type="text"
           value={username}
+          placeholder="Username"
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
       <label>
-        Password
+
         <input
           type="password"
           value={password}
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
       <label>
-        Confirm Password
         <input
           type="password"
           value={confirmPassword}
+          placeholder="Confirm Password"
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />

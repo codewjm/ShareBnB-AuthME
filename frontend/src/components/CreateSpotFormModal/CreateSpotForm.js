@@ -85,6 +85,7 @@ const imageData = {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Create a Spot</h2>
       <ul className="newSpot_error">
       { submited && errors.map((error) => (
     <div className="error-message">
@@ -94,7 +95,6 @@ const imageData = {
         {/* { submited && formErrors} */}
       </ul>
       <label>
-        <h4>Name Your Spot</h4>
         <input
           type="text"
           value={name}
@@ -103,7 +103,6 @@ const imageData = {
         />
       </label>
       <label>
-        <h4>How Would You Describe Your Spot?</h4>
         <input
           type="text"
           value={description}
@@ -112,7 +111,6 @@ const imageData = {
         />
       </label>
       <label>
-        <h4>Where Is Your Spot Located?</h4>
       </label>
       <div>
         <input
@@ -163,7 +161,6 @@ const imageData = {
         />
       </div>
       <label>
-        <h4>Upload an image of your spot</h4>
         <input
           type="text"
           value={image}
@@ -172,7 +169,6 @@ const imageData = {
         />
       </label>
       <label>
-        <h4>Set your price for your spot</h4>
         <input
           type="number"
           value={price}

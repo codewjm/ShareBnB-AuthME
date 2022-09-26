@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useHistory, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import './LoginForm.css';
 
@@ -10,15 +10,6 @@ function LoginForm() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  // const history = useHistory();
-
-
-// useEffect(() => {
-//   const errors = []
-//   if (credential.length < 1 ) errors.push("Invalid Email or Username")
-//   if (password.length < 1) errors.push("Enter your password")
-//   setErrors(errors)
-// }, [credential, password])
 
   const demoLogin = (e) => {
     e.preventDefault()
@@ -38,11 +29,6 @@ function LoginForm() {
     .catch(
         async (res) => {
           const data = await res.json();
-          console.log("data-----", data)
-          console.log("data.message-----", data.message)
-          console.log("data.errors-----", data.errors)
-          // console.log("OBJECT.VAL(data.errors)-----", Object.values(data.errors))
-
           if (!data.errors && data.message) {
             return setErrors([data.message])
           }

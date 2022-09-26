@@ -21,16 +21,12 @@ const filteredSpots = (spotsState) => {
 const SplashPage = () => {
   const dispatch = useDispatch();
   const allSpotsObj = useSelector((state) => state.spots);
-  // new filtered spots array
   const allSpots = filteredSpots(allSpotsObj);
-  // const allSpots = Object.values(allSpotsObj);
 
-  console.log("allSpots------", allSpots)
 
   useEffect(() => {
     dispatch(getAllSpots())
   }, [dispatch])
-  // console.log("allSpotsObj", allSpotsObj)
   if (!allSpots.length) return null;
 
   return (

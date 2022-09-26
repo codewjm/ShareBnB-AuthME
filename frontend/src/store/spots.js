@@ -153,19 +153,6 @@ const spotsReducer = (state = initialState, action) => {
         newState[spot.id] = spot
       });
 
-//!!!!!!!!!!! Creates a res.json() problem in console
-// not allowing use to create a spot from the splashpage
-// but will allow from the my listings page
-// likely due to the deletion of the userSpots key/array
-// thats my suspicion but I have had multiple people look at this
-// and absolutely nobodu can figure it out. I've poured into stackoverflow
-// a solution and when we take away this code below, my skeleton spot card
-// issue comes back. Solve one, break the other.
-
-      // if(newState.userSpots) {
-      //   delete newState.userSpots
-      // }
-
       // console.log("getAllSpots new state---", newState)
       return newState ;
     }
@@ -177,10 +164,6 @@ const spotsReducer = (state = initialState, action) => {
     }
     case CREATE_SPOT: {
       const newState = { ...state };
-
-      // newState[action.newSpot.id] = action.newSpot;
-      // newState.userSpots[action.newSpot.id] = action.newSpot;
-      // newState.userSpots.push(action.newSpot)
       return newState;
     }
     case LOAD_SPOT: {

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getUserReviews } from "../../store/reviews"
 import { Redirect } from "react-router-dom";
 import ReviewCard from "../ReviewCard";
-import { getAllReviews } from "../../store/reviews";
+// import { getAllReviews } from "../../store/reviews";
 
 export default function UserReviewsPage() {
 
@@ -11,7 +11,6 @@ export default function UserReviewsPage() {
   const sessionUser = useSelector((state) => state.session.user)
   const userReviewsObj = useSelector((state) => state.reviews?.userReviews);
   const userReviews = Object.values(userReviewsObj);
-  // console.log("UserReviewPage-------", userReviews)
 
 
   useEffect(() => {

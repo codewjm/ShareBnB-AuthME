@@ -30,7 +30,7 @@ export default function ReviewForm({ setShowModal }) {
     const newReviewData = {
       review,
       stars
-    }
+    };
 
     setErrors([]);
 
@@ -41,13 +41,12 @@ export default function ReviewForm({ setShowModal }) {
       dispatch(getSpot(spotId))
     })
       .catch(async (res) => {
-        console.log("res-------", res)
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors)
         else if (data && data.message) setErrors([data.message])
       }
       )
-  }
+  };
 
 
   return (
@@ -75,6 +74,7 @@ export default function ReviewForm({ setShowModal }) {
           max = {5}
           placeholder="Star Rating 1 - 5"
           onChange={(e) => setStars(e.target.value)}
+          required
         />
       </div>
       <button className="post-review-btn" type="submit">Post Review</button>

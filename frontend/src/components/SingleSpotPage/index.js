@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpot, deleteSpot, getAllSpots } from "../../store/spots";
+import { getSpot, deleteSpot } from "../../store/spots";
 import EditSpotFormModal from "../EditSpotFormModal";
 import reviewsReducer, { getAllReviews } from "../../store/reviews";
 import ReviewCard from "../ReviewCard"
@@ -20,8 +20,7 @@ function SingleSpotPage() {
 
   const onReviewDelete = () => {
     dispatch(getAllReviews(spotId))
-  }
-  // console.log("sessionUder/ownerId-----", sessionUser.id , spot.Owner.id)
+  };
 
   useEffect(() => {
     dispatch(getSpot(spotId))
@@ -35,14 +34,9 @@ function SingleSpotPage() {
       .then(() => {
         history.push("/");
       })
-      .catch((e) => console.log(e))
-    // .then(() => {
-    //   dispatch(getAllSpots())
-    // });
-    //
   };
+
   if (!spot) return null;
-  // if(!spotId) return <Redirect to="/my-listings" />
 
   return (isLoaded && spot && (
     <div className="master-spot-container">

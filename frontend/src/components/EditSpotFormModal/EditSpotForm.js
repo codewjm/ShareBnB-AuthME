@@ -10,25 +10,22 @@ function EditSpotForm() {
   const { spotId } = useParams()
   const userSpots = useSelector((state) => state.spots)
   const spot = userSpots[spotId]
-  // implement if history.push is giving you issues
-  // const sessionUser = useSelector((state) => state.session.user);
-  // const history = useHistory()
   const [name, setName] = useState(spot?.name);
+  const [address, setAddress] = useState(spot?.address);
   const [price, setPrice] = useState(spot?.price);
-  const [description, setDescription] = useState(spot?.description);
-  const [address, setAddress] = useState(spot?.address)
   const [city, setCity] = useState(spot?.city);
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
   const [lat, setLat] = useState(spot?.lat);
   const [lng, setLng] = useState(spot?.lng);
+  const [description, setDescription] = useState(spot?.description);
   const [errors, setErrors] = useState([]);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    // console.log("spot image", spot.Images)
+
 
 const editedSpotData = {
       name: name,
@@ -40,33 +37,17 @@ const editedSpotData = {
       lng: lng,
       description: description,
       price: price,
-      // Images: spot.Images
-
-      // name,
-      // address,
-      // city,
-      // state,
-      // country,
-      // lat,
-      // lng,
-      // description,
-      // price
     }
 
 
 
     await dispatch(updateSpot(spot.id, editedSpotData))
     .catch(async (res) => {
-      // const data = await res.json();
       const data = await res.json();
-      console.log("Error Data:---------", data)
-      console.log("Error Data.ERROR:---------", data.errors)
       if (data && data.errors) {
         setErrors(Object.values(data.errors));
-        console.log("my errors: ---------- ", errors)
       }
     });
-    // await history.push(`/spots/${spot.id}`)
   }
 
 

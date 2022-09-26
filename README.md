@@ -51,5 +51,9 @@ JWT_EXPIRES_IN=604800
 3. Navigate to your local host to see the site.
 
 
-##SharesBnB API Preview:
+## SharesBnB API Preview:
+
+## Splash Page 
+
+![SharesBnB-homepage](https://user-images.githubusercontent.com/95896008/192286349-bf6f9a7c-1d89-430f-b16a-1f22c865024b.png)
 

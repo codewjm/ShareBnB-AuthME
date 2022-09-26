@@ -5,6 +5,7 @@ SharesBnB is a reduced clone of the AirBnB web application. This clone allows us
 ## Tech Stack Used:
 
 Frontend:
+
 ![image](https://user-images.githubusercontent.com/20654267/192156837-122333b5-1337-4630-abcd-e48f538c141d.png)
 ![image](https://user-images.githubusercontent.com/20654267/192156876-64b1afdd-e93f-4f6b-a0ff-2d7e9b75258a.png)
 ![image](https://user-images.githubusercontent.com/20654267/192156881-268b4f35-02b2-4113-861b-c2ea54b6ff87.png)

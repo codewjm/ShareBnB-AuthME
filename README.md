@@ -51,3 +51,5 @@ JWT_EXPIRES_IN=604800
 3. Navigate to your local host to see the site.
 
 
+##SharesBnB API Preview:
+

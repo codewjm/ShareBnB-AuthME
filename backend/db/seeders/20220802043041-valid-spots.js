@@ -15,7 +15,7 @@ module.exports = {
         lat: 30.12345,
         lng: -31.12345,
         name: 'Space Place',
-        description: 'You cannot go wrong wit this spot. I assure you and your friends will love it.',
+        description: 'You cannot go wrong wit this spot.',
         price: 255
       },
       {
@@ -39,7 +39,7 @@ module.exports = {
         lat: 50.123456,
         lng: -51.654321,
         name: 'Saucer Joy Ride',
-        description: 'A very nice dwelling. You will want to come back.',
+        description: 'A very nice dwelling.',
         price: 145
       },
       {
@@ -63,7 +63,7 @@ module.exports = {
         lat: 70.123456,
         lng: -72.654321,
         name: 'Come Find Us',
-        description: 'Book us in the next week and we will give you access to our wine cellar.',
+        description: 'We will give you access to our wine cellar.',
         price: 525
       },
       {
@@ -75,7 +75,7 @@ module.exports = {
         lat: 71.123456,
         lng: -73.654321,
         name: 'House Amongst Trees',
-        description: 'This is a very nice place, kept clean, and with friendly neighbors.',
+        description: 'This is a very nice place with friendly neighbors.',
         price: 550
       },
       {

@@ -79,7 +79,7 @@ function LoginForm() {
       </label>
       <button type="submit" className="login-btn" onClick={(e) => handleSubmit(e)}>Log In</button>
       {/* // disabled={errors.length > 0} */}
-      <button onClick={demoLogin} className="login-buttons post-review-btn">Demo User</button>
+      <button onClick={demoLogin} className="login-buttons demo-user">Demo User</button>
 
     </form>
   );

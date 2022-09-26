@@ -53,11 +53,11 @@ export default function ReviewForm({ setShowModal }) {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Rate This Spot</h2>
-      <ul className="newReview_error">
+      <div className="newReview_error">
         {Object.values(errors).map((error, idx) => (
           <div key={idx}>{error}</div>
         ))}
-      </ul>
+      </div>
       <div>
         <input
           className="review-input"

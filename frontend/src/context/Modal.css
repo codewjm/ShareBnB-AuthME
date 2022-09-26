@@ -31,7 +31,7 @@ form {
   border-radius: 20px;
   width: 559px;
   margin-bottom: 5px;
-  padding: 20px;
+  padding: 21px;
 }
 
 h2 {
@@ -49,20 +49,38 @@ input {
   border-radius: 5px;
   padding: 10px;
   border: 1px solid lightgrey;
+  margin-left: 18px;
 }
 
 .newReview_error{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
   color: red;
+  margin-bottom: 12px;
+  margin-left: 19px;
 }
 
 .newSpot_error {
   color: red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  margin-left: 19px;
 }
 
 .login_error{
   color: red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  margin-left: 19px;
 }
 
 .signup_error {
   color: red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  margin-left: 19px;
 }

@@ -33,7 +33,7 @@ function SingleSpotPage() {
     e.preventDefault();
     await dispatch(deleteSpot(spotId))
       .then(() => {
-        history.push("/my-listings");
+        history.push("/");
       })
       .catch((e) => console.log(e))
     // .then(() => {
@@ -79,9 +79,17 @@ function SingleSpotPage() {
 
         </div>
       </div>
+      <div className="update-spot-container">
+        {sessionUser ?
+          <> {sessionUser?.id === spot?.ownerId && <div>
+            <EditSpotFormModal />
+            <button onClick={(e) => removeSpot(e)} className="review-modal-delete">Delete Spot</button>
+          </div>}
+          </> : <></>
+        }
+      </div>
       <div className="spot-reviews-header">
         <div className="spot-rating-reviews-container">
-
           <div className="fa fa-star fa-xs"></div>
           <span class-name="spot-rating-b">
             {!spot.avgStarRating ? "0.00" : spot.avgStarRating}
@@ -101,15 +109,6 @@ function SingleSpotPage() {
           reviews.map((review) => (
             <ReviewCard key={review.id} review={review} user={sessionUser} onDelete={() => onReviewDelete()} />
           )))}
-      </div>
-      <div>
-        {sessionUser ?
-          <> {sessionUser?.id === spot?.ownerId && <div>
-            <EditSpotFormModal />
-            <button onClick={(e) => removeSpot(e)}>Delete Spot</button>
-          </div>}
-          </> : <></>
-        }
       </div>
     </div>
   )

@@ -16,5 +16,21 @@
   font-weight: 600;
   color: white;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-left: 18px;
+}
+
+.demo-user {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 522px;
+  background-color: #EC5C74;
+  height: 42px;
+  font-size: 10pt;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  margin-left: 18px;
 }

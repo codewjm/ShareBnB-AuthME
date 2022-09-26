@@ -86,14 +86,14 @@ const imageData = {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Create a Spot</h2>
-      <ul className="newSpot_error">
+      <div className="newSpot_error">
       { submited && errors.map((error) => (
     <div className="error-message">
       {error}
     </div>
   ))}
         {/* { submited && formErrors} */}
-      </ul>
+      </div>
       <label>
         <input
           type="text"

@@ -15,7 +15,7 @@ function EditSpotFormModal({ spot }) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Your Spot</button>
+      <button onClick={() => setShowModal(true)} className="review-modal-button">Update Spot</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditSpotForm spot={spot} />

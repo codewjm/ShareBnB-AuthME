@@ -108,7 +108,7 @@ hr {
 
 .signup-button {
   display: flex;
-  /* margin: 20px; */
+  cursor: pointer;
 }
 
 #root {

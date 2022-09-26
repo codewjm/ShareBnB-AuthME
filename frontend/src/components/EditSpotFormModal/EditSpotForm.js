@@ -72,13 +72,13 @@ const editedSpotData = {
 
 return (
   <form onSubmit={handleSubmit}>
+    <h2>Edit Your Spot</h2>
     <div className="newSpot_error">
       {errors.map((error, idx) => (
         <div key={idx}>{error}</div>
       ))}
     </div>
     <label>
-        <h4>Edit Spot Name</h4>
       <input
         type="text"
         value={name}
@@ -87,7 +87,6 @@ return (
       />
     </label>
     <label>
-        <h4>Edit Spot Description</h4>
       <input
         type="text"
         value={description}
@@ -96,7 +95,6 @@ return (
       />
     </label>
     <label>
-      <h4>Edit Spot Location</h4>
     </label>
     <div>
     <input
@@ -147,7 +145,6 @@ return (
         />
       </div>
     <label>
-    <h4>Edit Spot Price</h4>
       <input
         type="number"
         value={price}
@@ -155,7 +152,7 @@ return (
         onChange={(e) => setPrice(e.target.value)}
       />
     </label>
-    <button type="submit">Sumbit Edits</button>
+    <button type="submit" className="post-review-btn">Update Spot</button>
   </form>
 );
 }

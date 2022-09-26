@@ -1,2 +1,0 @@
-# SharesBnB
-AuthMe Project Wed

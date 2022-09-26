@@ -5,3 +5,16 @@
   width: 50px;
   cursor: pointer;
 }
+
+.login-btn {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 522px;
+  background-color: #EC5C74;
+  height: 42px;
+  font-size: 10pt;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}

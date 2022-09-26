@@ -53,7 +53,7 @@ hr {
 
 .dropdown-menu {
   position: relative;
-  min-width: 90px;
+  min-width: 80px;
 }
 
 .dropdown-button:hover {
@@ -68,7 +68,7 @@ hr {
 }
 
 .dropdown-menu i.fa-user-circle {
-  font-size: 26px;
+  font-size: 23px;
   color: rgb(126, 126, 126);
   vertical-align: middle;
 }
@@ -87,7 +87,7 @@ hr {
   border: 1px solid rgb(226, 226, 226);
   border-radius: 300px;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px;
 }
 
 .login-signup-container {

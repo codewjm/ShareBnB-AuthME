@@ -56,7 +56,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Log in</h2>
-      <div>
+      <div className="login_error">
         {errors.map((error, idx) => (
           <div key={idx}>{error}</div>
         ))}
@@ -77,9 +77,9 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type="submit" onClick={(e) => handleSubmit(e)}>Log In</button>
+      <button type="submit" className="login-btn" onClick={(e) => handleSubmit(e)}>Log In</button>
       {/* // disabled={errors.length > 0} */}
-      <button onClick={demoLogin} className="login-buttons">Demo User</button>
+      <button onClick={demoLogin} className="login-buttons post-review-btn">Demo User</button>
 
     </form>
   );

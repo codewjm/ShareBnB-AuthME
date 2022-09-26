@@ -176,7 +176,7 @@ const imageData = {
           onChange={(e) => setPrice(e.target.value)}
         />
       </label>
-      <button type="submit">Create New Spot</button>
+      <button type="submit" className="post-review-btn">Create New Spot</button>
     </form>
   );
 }

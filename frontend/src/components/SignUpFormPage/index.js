@@ -41,11 +41,11 @@ function SignupFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul className="signup_error">
+      <div className="signup_error">
         {Object.values(errors).map((error, idx) => (
-          <div key={idx}>{error}</div>
+          <div className="signup_error" key={idx}>{error}</div>
         ))}
-      </ul>
+      </div>
       <label>
         <input
           type="text"
@@ -101,7 +101,7 @@ function SignupFormPage() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button type="submit" className="post-review-btn">Sign Up</button>
     </form>
   );
 }

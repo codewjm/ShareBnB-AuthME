@@ -29,9 +29,9 @@
 
 form {
   border-radius: 20px;
-  width: 600px;
+  width: 559px;
   margin-bottom: 5px;
-
+  padding: 20px;
 }
 
 h2 {
@@ -43,12 +43,12 @@ h2 {
 
 input {
   /* background-color: initial!important; */
-  border: rgb(19, 17, 17);
+  /* border: rgb(19, 17, 17); */
   width: 500px;
   height: 20px;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 5px;
+  border: 1px solid lightgrey;
 }
 
 .newReview_error{
@@ -56,5 +56,13 @@ input {
 }
 
 .newSpot_error {
-  margin-top: 0px;
+  color: red;
+}
+
+.login_error{
+  color: red;
+}
+
+.signup_error {
+  color: red;
 }

@@ -1,12 +1,13 @@
 .post-review-btn {
-  border: none;
-  border-radius: 20px;
-  width: 508px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 522px;
   background-color: #EC5C74;
-  height: 25px;
+  height: 42px;
   font-size: 10pt;
   font-weight: 600;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-

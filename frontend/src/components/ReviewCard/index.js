@@ -15,7 +15,7 @@ const ReviewCard = ({ review, onDelete }) => {
 
   const reviewedBy = review?.User?.firstName
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getAllReviews(spotId))
   }, [spotId])
 
@@ -40,25 +40,29 @@ const ReviewCard = ({ review, onDelete }) => {
 
   return (
     <div className="review-card-container">
-      <div className="fa fa-star fa-xs review-card-stars">
-        {review.stars}
+      <div className="review-stars-delete">
+        <div>
+          <i className="fa fa-star fa-xs review-card-stars"></i>
+          <span>
+            {review.stars}
+          </span>
+        </div>
+        {sessionUser?.id === review.userId &&
+          <div>
+            <button className="delete-button" onClick={handleDelete}>Delete Review</button>
+          </div>
+        }
       </div>
       <div>
         {reviewedBy}
       </div>
       <div>
         {new Date(review?.createdAt).toLocaleDateString(undefined, {
-        month: "long",
-        year: "numeric"
-      })}
+          month: "long",
+          year: "numeric"
+        })}
       </div>
       <div className="review-card-review">{review.review}</div>
-      {sessionUser?.id === review.userId &&
-        <div>
-          <button className="delete-button" onClick={handleDelete}>Delete Review</button>
-        </div>
-      }
-
     </div>
   )
 }

@@ -58,7 +58,7 @@
   margin-bottom: 30px;
 }
 
-.spot-price-rating-reviews{
+.spot-price-rating-reviews {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -129,35 +129,28 @@
 
 /* Review Card */
 .review-card-container {
-  display: flex;
-
-  /* border: solid black; */
-  flex-direction: column;
-  /* justify-content: center; */
-  flex-wrap: wrap;
-  height: 110px;
-  width: 50%;
-  /* border: solid black 5px; */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .review-card-review {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  width: 500px;
   flex-wrap: wrap;
   font-size: 14pt;
   font-weight: 400;
+  word-break: break-all;
+  max-height: 100px;
 }
 
 .review-card-stars {
-margin-bottom: 10px;
+
+  margin-bottom: 10px;
 }
 
 .all-spot-reviews {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 150px;
+  gap: 20px;
 }
 
 .spot-rating-reviews-container {

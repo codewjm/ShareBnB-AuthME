@@ -26,4 +26,19 @@ Hosted On:
 
 ![image](https://user-images.githubusercontent.com/20654267/192156972-28d4bd6a-7012-4d73-8bbd-105cfba12108.png)
 
+## Build Steps:
 
+### Installing Locally: 
+1. Clone the SharesBnB repository from GitHub into a file via your terminal: https://github.com/codewjm/SharesBnB.git
+2. Run npm install and npm -D in both your backend and frontend folders individually
+
+### Database Setup:
+1. Create a new .env file in the backend folder. 
+2. Within you .env file, copy and paste the following:
+```
+PORT=8000
+DB_FILE=db/dev.db
+JWT_SECRET=«generate_strong_secret_here»
+JWT_EXPIRES_IN=604800
+ ```
+ 

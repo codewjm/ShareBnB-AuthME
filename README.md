@@ -41,4 +41,13 @@ DB_FILE=db/dev.db
 JWT_SECRET=«generate_strong_secret_here»
 JWT_EXPIRES_IN=604800
  ```
- 
+ 3. Run `npx dotenv sequelize db:migrate` in the backend folder 
+ 4. Run `npx dotenv sequelize db:seed:all` in the backend folder 
+
+### Starting the SharesBnB Application
+
+1. Run `npm start` in the backend folder (NOTE: you must run this command before running the same in the frontend folder)
+2. Run `npm start` in the front end folder 
+3. Navigate to your local host to see the site.
+
+

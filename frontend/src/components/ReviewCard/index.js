@@ -38,6 +38,7 @@ const ReviewCard = ({ review, onDelete }) => {
 
   // if(!sessionUser || !review) return null;
 
+  
   return (
     <div className="review-card-container">
       <div className="review-stars-delete">
